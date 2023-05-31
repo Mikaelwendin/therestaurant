@@ -1,7 +1,3 @@
 export const Bookingpage = () => {
-
-
-
-
-    return <></>
-}
+  return <>Bookingpage is working</>;
+};

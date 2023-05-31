@@ -1,8 +1,3 @@
 export const Contactpage = () => {
-
-
-
-
-
-    return <></>
-}
+  return <>Contactpage is working</>;
+};

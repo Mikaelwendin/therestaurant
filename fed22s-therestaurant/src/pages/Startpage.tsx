@@ -1,9 +1,3 @@
 export const Startpage = () => {
-
-
-
-
-
-
-    return <></>
-}
+  return <>Startpage is working</>;
+};
