@@ -42,8 +42,8 @@ export const PageNavigation = () => {
             <nav className={navChange} id="nav">
                 <ul>
                     <li><Link to="/">Home</Link></li>
-                    <li><Link to="/ProjectsPage">Bookings</Link></li>
-                    <li><Link to="/ContactPage">Contact</Link></li>
+                    <li><Link to="/booking">Bookings</Link></li>
+                    <li><Link to="/contact">Contact</Link></li>
                 </ul>
             </nav>
         </div>
