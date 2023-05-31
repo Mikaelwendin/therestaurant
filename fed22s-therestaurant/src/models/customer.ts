@@ -6,3 +6,4 @@ export class Customer {
     )
     {}
 }
+export const defaultCustomer = new Customer("","","");
