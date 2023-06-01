@@ -1,10 +1,15 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { BookTable } from "../components/BookTable/BookTable";
 
 export const Startpage = () => {
 
+  const [isShown, setIsShown] = useState(() => {
+    return (localStorage.getItem("checkbox") || "false") === "false";
+  });
 
-  const [isShown, setIsShown] = useState(false);
+  useEffect(() => {
+    localStorage.setItem("checkbox", String(isShown));
+  } [isShown]);
 
   const handleClick = () => {
     setIsShown(true)
@@ -36,7 +41,7 @@ export const Bookingpage = () => {
 }
 
 
-
+//varför kallar den inte tillbaka till HOME efter att man har klickat på boka?
 
 //export const Startpage = () => {
 //  return <>Startpage is working</>;
