@@ -32,23 +32,23 @@ export const PageNavigation = () => {
 
 
     return <>
-    <div className="navContainer">
-        <div id="menu">
-            <div className={menuChange} id="menu-bar" onClick={menuOnClick}>
-                <div id="bar1" className="bar"></div>
-                <div id="bar2" className="bar"></div>
-                <div id="bar3" className="bar"></div>
+        <div className="navContainer">
+            <div id="menu">
+                <div className={menuChange} id="menu-bar" onClick={menuOnClick}>
+                    <div id="bar1" className="bar"></div>
+                    <div id="bar2" className="bar"></div>
+                    <div id="bar3" className="bar"></div>
+                </div>
+                <nav className={navChange} id="nav">
+                    <ul>
+                        <li><Link to="/">Home</Link></li>
+                        <li><Link to="/booking">Bookings</Link></li>
+                        <li><Link to="/contact">Contact</Link></li>
+                    </ul>
+                </nav>
             </div>
-            <nav className={navChange} id="nav">
-                <ul>
-                    <li><Link to="/">Home</Link></li>
-                    <li><Link to="/booking">Bookings</Link></li>
-                    <li><Link to="/contact">Contact</Link></li>
-                </ul>
-            </nav>
-        </div>
 
-        <div className={bgChange} id="menu-bg"></div>
+            <div className={bgChange} id="menu-bg"></div>
         </div>
     </>
 }
