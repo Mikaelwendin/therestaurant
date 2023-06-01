@@ -12,7 +12,7 @@ export const Bookingpage = () => {
     return <>
         {!isShown && (
             <button onClick={handleClick}>Boka Bord</button>)}
-            {isShown && (<BookTable></BookTable>)}
+        {isShown && (<BookTable></BookTable>)}
     </>;
 
 }
