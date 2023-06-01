@@ -12,12 +12,10 @@ const RedButton = styled.button<ButtonProps>`
   border-radius: 5px;
 `;
 
-
 const Button: React.FC<ButtonProps> = () => {
     return (
         <div>
             <RedButton>Röd knapp</RedButton>
-
         </div>
     );
 };
