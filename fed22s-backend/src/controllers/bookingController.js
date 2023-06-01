@@ -45,14 +45,20 @@ exports.createNewBooking = async (req, res) => {
 };
 
 exports.updateBookingById = async (req, res) => {
-  return;
-};
+  const bookingId = req.params.bookingId;
 
-/*
-const doc = await Model.findById(id)
-doc.name = 'jason bourne';
-await doc.save();
-*/
+  const filter = { _id: bookingId };
+  const update = {
+    date: req.body.date,
+    time: req.body.time,
+    numberOfGuests: req.body.numberOfGuests,
+    customer: req.body.customer,
+  };
+
+  const booking = await Booking.findOneAndUpdate(filter, update, { new: true });
+
+  return res.json(booking);
+};
 
 exports.deleteBookingById = async (req, res) => {
   const bookingId = req.params.bookingId;
