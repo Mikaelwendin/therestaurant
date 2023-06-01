@@ -22,3 +22,39 @@ exports.getBookingById = async (req, res) => {
 
   return res.status(200).json(booking);
 };
+
+exports.createNewBooking = async (req, res) => {
+  // use custom error in this fn:?
+  try {
+    const newBooking = await Booking.create(req.body);
+
+    return res
+      .setHeader(
+        "Location",
+        `http://localhost:${process.env.PORT}/api/v1/bookings/${newBooking._id}`
+      )
+      .status(201)
+      .json(newBooking);
+  } catch (error) {
+    console.error(error);
+
+    return res.status(500).json({
+      message: error.message,
+    });
+  }
+
+  //const newBooking = req.body;
+  //console.log(newBooking);
+};
+
+exports.updateBookingById = async (req, res) => {
+  return;
+};
+
+/*
+const doc = await Model.findById(id)
+doc.name = 'jason bourne';
+await doc.save();
+
+
+*/
