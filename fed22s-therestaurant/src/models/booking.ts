@@ -1,4 +1,4 @@
-import { Customer } from "./customer";
+import { Customer, defaultCustomer } from "./customer";
 
 export class Booking {
     constructor(
@@ -9,3 +9,4 @@ export class Booking {
     )
     {}
 }
+export let defaultBooking = new Booking("", "", "", defaultCustomer);
