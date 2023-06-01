@@ -6,7 +6,7 @@ exports.getAllBookings = async (req, res) => {
 
   const bookings = await Booking.find();
 
-  //total bookings in database?
+  //show total bookings in database?
   return res.json({
     data: bookings,
   });
@@ -42,9 +42,6 @@ exports.createNewBooking = async (req, res) => {
       message: error.message,
     });
   }
-
-  //const newBooking = req.body;
-  //console.log(newBooking);
 };
 
 exports.updateBookingById = async (req, res) => {
@@ -55,6 +52,14 @@ exports.updateBookingById = async (req, res) => {
 const doc = await Model.findById(id)
 doc.name = 'jason bourne';
 await doc.save();
-
-
 */
+
+exports.deleteBookingById = async (req, res) => {
+  const bookingId = req.params.bookingId;
+
+  //if (!bookingToDelete) error finns ej
+
+  await Booking.findByIdAndDelete(bookingId);
+
+  return res.sendStatus(204);
+};
