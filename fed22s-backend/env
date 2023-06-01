@@ -1,0 +1,2 @@
+MONGO_CONNECTION_STRING = mongodb+srv://fruktBanan:Kian56!ss@cluster1337.dts3ohy.mongodb.net/the-restaurant-grupp-4?retryWrites=true&w=majority
+PORT = 4000
