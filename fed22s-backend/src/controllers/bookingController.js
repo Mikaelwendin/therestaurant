@@ -11,3 +11,14 @@ exports.getAllBookings = async (req, res) => {
     data: bookings,
   });
 };
+
+exports.getBookingById = async (req, res) => {
+  const bookingId = req.params.bookingId;
+
+  const booking = await Booking.findById(bookingId);
+
+  // Throw error needs to be added here:
+  //if (!booking) throw new Error...
+
+  return res.status(200).json(booking);
+};
