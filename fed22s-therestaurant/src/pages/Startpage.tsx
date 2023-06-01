@@ -9,7 +9,7 @@ export const Startpage = () => {
 
   useEffect(() => {
     localStorage.setItem("checkbox", String(isShown));
-  } [isShown]);
+  }, [isShown]);
 
   const handleClick = () => {
     setIsShown(true)
