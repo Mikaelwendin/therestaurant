@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 
 
 
+
 export const Startpage = () => {
   // const [isShown, setIsShown] = useState(false);
 
@@ -17,6 +18,7 @@ export const Startpage = () => {
 
   return (
     <>
+
       <p>Startpage is working</p>
 
       {/* {isShown && (
