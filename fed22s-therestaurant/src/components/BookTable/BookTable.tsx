@@ -11,8 +11,13 @@ export const BookTable = () => {
     useEffect(() => {
         const testfunc = () => {
         const test = checkDate(mockBookingData, userInput.date, userInput.time)
-        const tablesLeft = checkTablesLeft(test) 
-        tablesLeft === 0 ? setTestBool(false): setTestBool(true), setErrMsg("Det finns inga bord att boka den dagen!");
+        const tablesLeft = checkTablesLeft(test)
+        if (tablesLeft === 0) {
+            setTestBool(false)
+            setUserInput(defaultBooking)
+            setErrMsg("Det finns inga bord att boka den dagen!");
+        }
+        else setTestBool(true);
         }
         if (userInput.date) {
             testfunc()
@@ -21,8 +26,9 @@ export const BookTable = () => {
 
     const handleSubmit = (e: FormEvent) => {
         e.preventDefault();
-        setUserInput({ ...userInput, date: dateState.toLocaleDateString()});   
+        setUserInput({ ...userInput, date: dateState.toLocaleDateString()});  
     }
+    console.log(testBool)
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
 
