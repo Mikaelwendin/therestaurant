@@ -1,5 +1,5 @@
 //Thu Jun 15 2023: 88 persons booked
-//Thu Jun 16 2023: 19 persons booked
+//Fri Jun 16 2023: 19 persons booked
 
 exports.mockBookingData = [
   {
@@ -93,7 +93,7 @@ exports.mockBookingData = [
     },
   },
   {
-    date: "Thu Jun 16 2023",
+    date: "Fri Jun 16 2023",
     time: "test-time",
     numberOfGuests: 3,
     customer: {
@@ -103,7 +103,7 @@ exports.mockBookingData = [
     },
   },
   {
-    date: "Thu Jun 16 2023",
+    date: "Fri Jun 16 2023",
     time: "test-time",
     numberOfGuests: 10,
     customer: {
@@ -113,7 +113,7 @@ exports.mockBookingData = [
     },
   },
   {
-    date: "Thu Jun 16 2023",
+    date: "Fri Jun 16 2023",
     time: "test-time",
     numberOfGuests: 6,
     customer: {
