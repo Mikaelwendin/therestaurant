@@ -8,21 +8,27 @@ export const BookTable = () => {
     const [testBool, setTestBool] = useState(false);
     const [dateState, setDateState] = useState(new Date());
     const [userInput, setUserInput] = useState<Booking>(defaultBooking)
-
-    const handleSubmit = (e: FormEvent) => {
-        e.preventDefault();
-        setUserInput({ ...userInput, date: dateState.toLocaleDateString()});   
-    }
     useEffect(() => {
         const testfunc = () => {
-        const test = checkDate(mockBookingData, userInput.date)
-        const tablesLeft = checkTablesLeft(test) 
-        tablesLeft === 0 ? setTestBool(false): setTestBool(true), setErrMsg("Det finns inga bord att boka den dagen!");
+        const test = checkDate(mockBookingData, userInput.date, userInput.time)
+        const tablesLeft = checkTablesLeft(test)
+        if (tablesLeft === 0) {
+            setTestBool(false)
+            setUserInput(defaultBooking)
+            setErrMsg("Det finns inga bord att boka den dagen!");
+        }
+        else setTestBool(true);
         }
         if (userInput.date) {
             testfunc()
         }
     }, [userInput])
+
+    const handleSubmit = (e: FormEvent) => {
+        e.preventDefault();
+        setUserInput({ ...userInput, date: dateState.toLocaleDateString()});  
+    }
+    console.log(testBool)
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
 
@@ -40,6 +46,7 @@ export const BookTable = () => {
         setUserInput({ ...userInput, numberOfGuests: parseInt(e.target.value) });
 
     }
+    console.log(userInput);
 
     return <>
         {!testBool && (<div className="bookingBox">
@@ -54,7 +61,25 @@ export const BookTable = () => {
                     <option value="5">5</option>
                     <option value="6">6</option>
                 </select>
-                <button>Go</button>
+                <label htmlFor="early">18:00</label>
+                <input
+                    type="radio"
+                    value="18:00"
+                    onChange={handleChange}
+                    name="time"
+                    id="early"
+
+                />
+                <label htmlFor="late">21:00</label>
+                <input
+                    type="radio"
+                    value="21:00"
+                    onChange={handleChange}
+                    name="time"
+                    id="late"
+
+                />
+                <button disabled={!userInput.time || !userInput.date && userInput.numberOfGuests < 1}>Go</button>
             </form>
             <h2>{errMsg}</h2>
         </div>)}
@@ -78,24 +103,6 @@ export const BookTable = () => {
                     value={userInput.customer.email}
                     onChange={handleChange}
                     name="email"
-                />
-                <label htmlFor="early">18:00</label>
-                <input
-                    type="radio"
-                    value="18:00"
-                    onChange={handleChange}
-                    name="time"
-                    id="early"
-
-                />
-                <label htmlFor="late">21:00</label>
-                <input
-                    type="radio"
-                    value="21:00"
-                    onChange={handleChange}
-                    name="time"
-                    id="late"
-
                 />
                 <button>Spara</button>
             </form>
