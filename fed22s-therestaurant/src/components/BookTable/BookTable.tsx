@@ -4,21 +4,20 @@ import { Booking, defaultBooking } from "../../models/booking";
 import { checkDate, checkTablesLeft, mockBookingData } from "../../functions/functions";
 export const BookTable = () => {
 
+    const [errMsg, setErrMsg] = useState("");
     const [testBool, setTestBool] = useState(false);
     const [dateState, setDateState] = useState(new Date());
     const [userInput, setUserInput] = useState<Booking>(defaultBooking)
 
-    // --------------------------------------------------------- HÄR ÄR DET FEL!
     const handleSubmit = (e: FormEvent) => {
         e.preventDefault();
         setUserInput({ ...userInput, date: dateState.toLocaleDateString()});   
-        // --------------------------------------------------------- HÄR ÄR DET FEL!
     }
     useEffect(() => {
         const testfunc = () => {
         const test = checkDate(mockBookingData, userInput.date)
         const tablesLeft = checkTablesLeft(test) 
-        tablesLeft === 0 ? setTestBool(false): setTestBool(true);
+        tablesLeft === 0 ? setTestBool(false): setTestBool(true), setErrMsg("Det finns inga bord att boka den dagen!");
         }
         if (userInput.date) {
             testfunc()
@@ -57,6 +56,7 @@ export const BookTable = () => {
                 </select>
                 <button>Go</button>
             </form>
+            <h2>{errMsg}</h2>
         </div>)}
 
         {testBool && (
