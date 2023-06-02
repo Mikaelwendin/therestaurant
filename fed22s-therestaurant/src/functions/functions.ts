@@ -1,8 +1,8 @@
 import { Booking } from "../models/booking";
 
-export const checkDate = (list:Booking[], date:string) => {
+export const checkDate = (list:Booking[], date:string, time:string) => {
  const filtered = list.filter(dates => {
-    return dates.date === date;
+    return dates.date === date && dates.time === time;
   })
 return filtered;
 }
@@ -24,7 +24,7 @@ export const checkTablesLeft = (list: Booking[]) => {
 export const mockBookingData:Booking[] = [
     {
       date: "2023-06-10",
-      time: "test-time",
+      time: "18:00",
       numberOfGuests: 16,
       customer: {
         name: "name1",
@@ -34,7 +34,7 @@ export const mockBookingData:Booking[] = [
     },
     {
       date: "2023-06-10",
-      time: "test-time",
+      time: "18:00",
       numberOfGuests: 6,
       customer: {
         name: "name2",
@@ -44,7 +44,7 @@ export const mockBookingData:Booking[] = [
     },
     {
       date: "2023-06-10",
-      time: "test-time",
+      time: "18:00",
       numberOfGuests: 6,
       customer: {
         name: "name3",
@@ -54,7 +54,7 @@ export const mockBookingData:Booking[] = [
     },
     {
       date: "2023-06-10",
-      time: "test-time",
+      time: "18:00",
       numberOfGuests: 3,
       customer: {
         name: "name4",
@@ -64,7 +64,7 @@ export const mockBookingData:Booking[] = [
     },
     {
       date: "2023-06-10",
-      time: "test-time",
+      time: "18:00",
       numberOfGuests: 12,
       customer: {
         name: "name5",
@@ -74,7 +74,7 @@ export const mockBookingData:Booking[] = [
     },
     {
       date: "2023-06-10",
-      time: "test-time",
+      time: "18:00",
       numberOfGuests: 14,
       customer: {
         name: "name5",
@@ -84,7 +84,7 @@ export const mockBookingData:Booking[] = [
     },
     {
       date: "2023-06-10",
-      time: "test-time",
+      time: "18:00",
       numberOfGuests: 10,
       customer: {
         name: "name6",
@@ -94,12 +94,22 @@ export const mockBookingData:Booking[] = [
     },
     {
       date: "2023-06-10",
-      time: "test-time",
+      time: "18:00",
       numberOfGuests: 11,
       customer: {
         name: "name7",
         email: "mail7",
         phone: "phone7",
+      },
+    },
+    {
+      date: "2023-06-10",
+      time: "21:00",
+      numberOfGuests: 11,
+      customer: {
+        name: "name20",
+        email: "mail20",
+        phone: "phone20",
       },
     },
     {
