@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent, useState } from "react"
+import { ChangeEvent, FormEvent, useEffect, useState } from "react"
 import Calendar from "react-calendar";
 import { Booking, defaultBooking } from "../../models/booking";
 import { checkDate, checkTablesLeft, mockBookingData } from "../../functions/functions";
@@ -11,14 +11,20 @@ export const BookTable = () => {
     // --------------------------------------------------------- HÄR ÄR DET FEL!
     const handleSubmit = (e: FormEvent) => {
         e.preventDefault();
-        setUserInput({ ...userInput, date: dateState.toString() })
-        const test = checkDate(mockBookingData, "Thu Jun 15 2023")
-        const tablesLeft = checkTablesLeft(test)
-        tablesLeft === 0 ? setTestBool(false): setTestBool(true);
-        console.log(test);
+        setUserInput({ ...userInput, date: dateState.toLocaleDateString()});   
         // --------------------------------------------------------- HÄR ÄR DET FEL!
-
     }
+    useEffect(() => {
+        const testfunc = () => {
+        const test = checkDate(mockBookingData, userInput.date)
+        const tablesLeft = checkTablesLeft(test) 
+        tablesLeft === 0 ? setTestBool(false): setTestBool(true);
+        }
+        if (userInput.date) {
+            testfunc()
+        }
+    }, [userInput])
+
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
 
         const value = e.target.name;
@@ -35,13 +41,11 @@ export const BookTable = () => {
         setUserInput({ ...userInput, numberOfGuests: parseInt(e.target.value) });
 
     }
-    console.log(userInput);
-    console.log(dateState)
 
     return <>
         {!testBool && (<div className="bookingBox">
             <form onSubmit={handleSubmit}>
-                <Calendar value={dateState} onClickDay={setDateState} minDate={new Date()}></Calendar>
+                <Calendar value={dateState} onClickDay={setDateState} minDate={new Date()} ></Calendar>
                 <select name="numberOfPeople" value={userInput.numberOfGuests} onChange={handleSelect}>
                     <option value=""> Please select number of guests</option>
                     <option value="1">1</option>

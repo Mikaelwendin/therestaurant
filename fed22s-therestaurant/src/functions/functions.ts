@@ -23,9 +23,9 @@ export const checkTablesLeft = (list: Booking[]) => {
 
 export const mockBookingData:Booking[] = [
     {
-      date: "Thu Jun 15 2023",
+      date: "2023-06-10",
       time: "test-time",
-      numberOfGuests: 5,
+      numberOfGuests: 16,
       customer: {
         name: "name1",
         email: "mail1",
@@ -33,9 +33,9 @@ export const mockBookingData:Booking[] = [
       },
     },
     {
-      date: "Thu Jun 15 2023",
+      date: "2023-06-10",
       time: "test-time",
-      numberOfGuests: 10,
+      numberOfGuests: 6,
       customer: {
         name: "name2",
         email: "mail2",
@@ -43,9 +43,9 @@ export const mockBookingData:Booking[] = [
       },
     },
     {
-      date: "Thu Jun 15 2023",
+      date: "2023-06-10",
       time: "test-time",
-      numberOfGuests: 5,
+      numberOfGuests: 6,
       customer: {
         name: "name3",
         email: "mail3",
@@ -53,9 +53,9 @@ export const mockBookingData:Booking[] = [
       },
     },
     {
-      date: "Thu Jun 15 2023",
+      date: "2023-06-10",
       time: "test-time",
-      numberOfGuests: 20,
+      numberOfGuests: 3,
       customer: {
         name: "name4",
         email: "mail4",
@@ -63,9 +63,9 @@ export const mockBookingData:Booking[] = [
       },
     },
     {
-      date: "Thu Jun 15 2023",
+      date: "2023-06-10",
       time: "test-time",
-      numberOfGuests: 10,
+      numberOfGuests: 12,
       customer: {
         name: "name5",
         email: "mail5",
@@ -73,9 +73,9 @@ export const mockBookingData:Booking[] = [
       },
     },
     {
-      date: "Thu Jun 15 2023",
+      date: "2023-06-10",
       time: "test-time",
-      numberOfGuests: 10,
+      numberOfGuests: 14,
       customer: {
         name: "name5",
         email: "mail5",
@@ -83,7 +83,7 @@ export const mockBookingData:Booking[] = [
       },
     },
     {
-      date: "Thu Jun 15 2023",
+      date: "2023-06-10",
       time: "test-time",
       numberOfGuests: 10,
       customer: {
@@ -93,9 +93,9 @@ export const mockBookingData:Booking[] = [
       },
     },
     {
-      date: "Thu Jun 15 2023",
+      date: "2023-06-10",
       time: "test-time",
-      numberOfGuests: 15,
+      numberOfGuests: 11,
       customer: {
         name: "name7",
         email: "mail7",
@@ -103,7 +103,7 @@ export const mockBookingData:Booking[] = [
       },
     },
     {
-      date: "Thu Jun 15 2023",
+      date: "2023-06-11",
       time: "test-time",
       numberOfGuests: 3,
       customer: {
@@ -113,7 +113,7 @@ export const mockBookingData:Booking[] = [
       },
     },
     {
-      date: "Thu Jun 16 2023",
+      date: "2023-06-11",
       time: "test-time",
       numberOfGuests: 3,
       customer: {
@@ -123,7 +123,7 @@ export const mockBookingData:Booking[] = [
       },
     },
     {
-      date: "Thu Jun 16 2023",
+      date: "2023-06-11",
       time: "test-time",
       numberOfGuests: 10,
       customer: {
@@ -133,7 +133,7 @@ export const mockBookingData:Booking[] = [
       },
     },
     {
-      date: "Thu Jun 16 2023",
+      date: "2023-06-11",
       time: "test-time",
       numberOfGuests: 6,
       customer: {
