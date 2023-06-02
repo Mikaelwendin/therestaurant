@@ -6,16 +6,24 @@ interface ButtonProps {
 }
 
 const GreenButton = styled.button<ButtonProps>`
-  background-color: green;
+  background-color: #DAF7A6;
   color: white;
-  padding: 10px 10px;
+  padding: 5px 5px;
   border-radius: 5px;
+  border: none;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  transform: translateY(0);
+  transition: transform 0.3s ease;
+
+&:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 `;
 
 const Button: React.FC<ButtonProps> = () => {
   return (
     <div>
-      <GreenButton>Grön knapp</GreenButton>
+      <GreenButton>BOKA MIG</GreenButton>
     </div>
   );
 };
