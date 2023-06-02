@@ -7,14 +7,14 @@ export const BookTable = () => {
     const [testBool, setTestBool] = useState(false);
     const [dateState, setDateState] = useState(new Date());
     const [userInput, setUserInput] = useState<Booking>(defaultBooking)
-   
+
     // --------------------------------------------------------- HÄR ÄR DET FEL!
     const handleSubmit = (e: FormEvent) => {
         e.preventDefault();
-        setUserInput({...userInput, date: dateState.toString()})
+        setUserInput({ ...userInput, date: dateState.toString() })
         const test = checkDate(mockBookingData, "Thu Jun 15 2023")
-        console.log(checkTablesLeft(test));
-        setTestBool(true);
+        const tablesLeft = checkTablesLeft(test)
+        tablesLeft === 0 ? setTestBool(false): setTestBool(true);
         console.log(test);
         // --------------------------------------------------------- HÄR ÄR DET FEL!
 
