@@ -5,17 +5,21 @@ import { checkDate, checkTablesLeft, mockBookingData } from "../../functions/fun
 export const BookTable = () => {
 
     const [errMsg, setErrMsg] = useState("");
-    const [testBool, setTestBool] = useState(false);
+    const [testBool, setTestBool] = useState(false); //ska ha nytt namn
     const [dateState, setDateState] = useState(new Date());
     const [userInput, setUserInput] = useState<Booking>(defaultBooking)
     useEffect(() => {
-        const testfunc = () => {
+        const testfunc = () => { //ska ha nytt namn
         const test = checkDate(mockBookingData, userInput.date, userInput.time)
         const tablesLeft = checkTablesLeft(test)
         if (tablesLeft === 0) {
             setTestBool(false)
             setUserInput(defaultBooking)
             setErrMsg("Det finns inga bord att boka den dagen!");
+        }
+        if (userInput.numberOfGuests > 6 && tablesLeft < 2) {
+            setErrMsg("Vi har tyvärr bara ett bord ledigt, till max 6 gäster!");
+            setUserInput(defaultBooking)
         }
         else setTestBool(true);
         }
@@ -60,6 +64,12 @@ export const BookTable = () => {
                     <option value="4">4</option>
                     <option value="5">5</option>
                     <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
                 </select>
                 <label htmlFor="early">18:00</label>
                 <input

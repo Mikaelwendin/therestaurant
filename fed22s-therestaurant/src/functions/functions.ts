@@ -55,16 +55,6 @@ export const mockBookingData:Booking[] = [
     {
       date: "2023-06-10",
       time: "18:00",
-      numberOfGuests: 3,
-      customer: {
-        name: "name4",
-        email: "mail4",
-        phone: "phone4",
-      },
-    },
-    {
-      date: "2023-06-10",
-      time: "18:00",
       numberOfGuests: 12,
       customer: {
         name: "name5",
