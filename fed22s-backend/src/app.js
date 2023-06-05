@@ -3,6 +3,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bookingRoutes = require("./routes/bookingRoutes");
 const { notFoundMiddleware } = require("./middleware/notFoundMiddleware");
+const { errorMiddleware } = require("./middleware/errorMiddleware");
 
 const app = express();
 
@@ -16,6 +17,7 @@ app.use((req, res, next) => {
 app.use("/api/v1/bookings", bookingRoutes);
 
 app.use(notFoundMiddleware);
+app.use(errorMiddleware);
 
 const port = process.env.PORT || 5000;
 async function run() {
