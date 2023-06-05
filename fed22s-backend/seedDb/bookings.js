@@ -1,11 +1,13 @@
-//Thu Jun 15 2023: 88 persons booked
-//Fri Jun 16 2023: 19 persons booked
+//2023-06-15 - 18:00: 88 persons booked
+//2023-06-15 - 21:00: 51 persons booked
+//2023-06-16 - 18:00: 19 persons booked
+//2023-06-16 - 21:00: 31 persons booked
 
 exports.mockBookingData = [
   {
-    date: "Thu Jun 15 2023",
-    time: "test-time",
-    numberOfGuests: 5,
+    date: "2023-06-15",
+    time: "18:00",
+    numberOfGuests: 6,
     customer: {
       name: "name1",
       email: "mail1",
@@ -13,9 +15,9 @@ exports.mockBookingData = [
     },
   },
   {
-    date: "Thu Jun 15 2023",
-    time: "test-time",
-    numberOfGuests: 10,
+    date: "2023-06-15",
+    time: "18:00",
+    numberOfGuests: 12,
     customer: {
       name: "name2",
       email: "mail2",
@@ -23,9 +25,9 @@ exports.mockBookingData = [
     },
   },
   {
-    date: "Thu Jun 15 2023",
-    time: "test-time",
-    numberOfGuests: 5,
+    date: "2023-06-15",
+    time: "18:00",
+    numberOfGuests: 12,
     customer: {
       name: "name3",
       email: "mail3",
@@ -33,9 +35,9 @@ exports.mockBookingData = [
     },
   },
   {
-    date: "Thu Jun 15 2023",
-    time: "test-time",
-    numberOfGuests: 20,
+    date: "2023-06-15",
+    time: "18:00",
+    numberOfGuests: 10,
     customer: {
       name: "name4",
       email: "mail4",
@@ -43,8 +45,8 @@ exports.mockBookingData = [
     },
   },
   {
-    date: "Thu Jun 15 2023",
-    time: "test-time",
+    date: "2023-06-15",
+    time: "18:00",
     numberOfGuests: 10,
     customer: {
       name: "name5",
@@ -53,8 +55,8 @@ exports.mockBookingData = [
     },
   },
   {
-    date: "Thu Jun 15 2023",
-    time: "test-time",
+    date: "2023-06-15",
+    time: "18:00",
     numberOfGuests: 10,
     customer: {
       name: "name5",
@@ -63,8 +65,8 @@ exports.mockBookingData = [
     },
   },
   {
-    date: "Thu Jun 15 2023",
-    time: "test-time",
+    date: "2023-06-15",
+    time: "18:00",
     numberOfGuests: 10,
     customer: {
       name: "name6",
@@ -73,9 +75,9 @@ exports.mockBookingData = [
     },
   },
   {
-    date: "Thu Jun 15 2023",
-    time: "test-time",
-    numberOfGuests: 15,
+    date: "2023-06-15",
+    time: "18:00",
+    numberOfGuests: 12,
     customer: {
       name: "name7",
       email: "mail7",
@@ -83,9 +85,9 @@ exports.mockBookingData = [
     },
   },
   {
-    date: "Thu Jun 15 2023",
-    time: "test-time",
-    numberOfGuests: 3,
+    date: "2023-06-15",
+    time: "18:00",
+    numberOfGuests: 6,
     customer: {
       name: "name8",
       email: "mail8",
@@ -93,8 +95,78 @@ exports.mockBookingData = [
     },
   },
   {
-    date: "Fri Jun 16 2023",
-    time: "test-time",
+    date: "2023-06-15",
+    time: "21:00",
+    numberOfGuests: 5,
+    customer: {
+      name: "name12",
+      email: "mail12",
+      phone: "phone12",
+    },
+  },
+  {
+    date: "2023-06-15",
+    time: "21:00",
+    numberOfGuests: 9,
+    customer: {
+      name: "name13",
+      email: "mail13",
+      phone: "phone13",
+    },
+  },
+  {
+    date: "2023-06-15",
+    time: "21:00",
+    numberOfGuests: 10,
+    customer: {
+      name: "name14",
+      email: "mail14",
+      phone: "phone14",
+    },
+  },
+  {
+    date: "2023-06-15",
+    time: "21:00",
+    numberOfGuests: 2,
+    customer: {
+      name: "name15",
+      email: "mail15",
+      phone: "phone15",
+    },
+  },
+  {
+    date: "2023-06-15",
+    time: "21:00",
+    numberOfGuests: 12,
+    customer: {
+      name: "name16",
+      email: "mail16",
+      phone: "phone16",
+    },
+  },
+  {
+    date: "2023-06-15",
+    time: "21:00",
+    numberOfGuests: 10,
+    customer: {
+      name: "name17",
+      email: "mail17",
+      phone: "phone17",
+    },
+  },
+  {
+    date: "2023-06-15",
+    time: "21:00",
+    numberOfGuests: 3,
+    customer: {
+      name: "name18",
+      email: "mail18",
+      phone: "phone18",
+    },
+  },
+  {
+    date: "2023-06-16",
+    time: "18:00",
     numberOfGuests: 3,
     customer: {
       name: "name9",
@@ -103,8 +175,8 @@ exports.mockBookingData = [
     },
   },
   {
-    date: "Fri Jun 16 2023",
-    time: "test-time",
+    date: "2023-06-16",
+    time: "18:00",
     numberOfGuests: 10,
     customer: {
       name: "name10",
@@ -113,13 +185,53 @@ exports.mockBookingData = [
     },
   },
   {
-    date: "Fri Jun 16 2023",
-    time: "test-time",
+    date: "2023-06-16",
+    time: "18:00",
     numberOfGuests: 6,
     customer: {
       name: "name11",
       email: "mail11",
       phone: "phone11",
+    },
+  },
+  {
+    date: "2023-06-16",
+    time: "21:00",
+    numberOfGuests: 3,
+    customer: {
+      name: "name19",
+      email: "mail19",
+      phone: "phone19",
+    },
+  },
+  {
+    date: "2023-06-16",
+    time: "21:00",
+    numberOfGuests: 10,
+    customer: {
+      name: "name20",
+      email: "mail20",
+      phone: "phone20",
+    },
+  },
+  {
+    date: "2023-06-16",
+    time: "21:00",
+    numberOfGuests: 6,
+    customer: {
+      name: "name30",
+      email: "mail30",
+      phone: "phone30",
+    },
+  },
+  {
+    date: "2023-06-16",
+    time: "21:00",
+    numberOfGuests: 12,
+    customer: {
+      name: "name31",
+      email: "mail31",
+      phone: "phone31",
     },
   },
 ];

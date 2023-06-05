@@ -6,9 +6,14 @@ exports.getAllBookings = async (req, res) => {
 
   const bookings = await Booking.find();
 
-  //show total bookings in database?
+  const totalBookingsInDb = await Booking.countDocuments();
+
   return res.json({
     data: bookings,
+    meta: {
+      total: totalBookingsInDb,
+      count: bookings.length,
+    },
   });
 };
 
