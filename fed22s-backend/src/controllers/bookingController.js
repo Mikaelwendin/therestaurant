@@ -1,4 +1,5 @@
 const Booking = require("../models/Booking");
+const { NotFoundError } = require("../utils/errors");
 
 exports.getAllBookings = async (req, res) => {
   //limit?
@@ -22,8 +23,8 @@ exports.getBookingById = async (req, res) => {
 
   const booking = await Booking.findById(bookingId);
 
-  // Throw error needs to be added here:
-  //if (!booking) throw new Error...
+  if (!booking)
+    throw new NotFoundError("A booking with that ID does not exist");
 
   return res.status(200).json(booking);
 };
