@@ -1,5 +1,6 @@
 require("dotenv").config();
 require("express-async-errors");
+const cors = require("cors");
 const express = require("express");
 const mongoose = require("mongoose");
 const bookingRoutes = require("./routes/bookingRoutes");
@@ -9,6 +10,13 @@ const { errorMiddleware } = require("./middleware/errorMiddleware");
 const app = express();
 
 app.use(express.json());
+
+app.use(
+  cors({
+    origin: ["http://localhost:5173"],
+    methods: ["GET", "PUT", "POST", "DELETE"],
+  })
+);
 
 app.use((req, res, next) => {
   console.log(`Processing ${req.method} request to ${req.path}`);
