@@ -1,9 +1,11 @@
 import { ChangeEvent, FormEvent, useState } from "react";
+import { Confirmation } from "../Confirmation/Confirmation";
 
 export const CancelTable = () => {
 
     const [bookingId, setBookingId] = useState("");
     const [isShown, setIsShown] = useState(false);
+    const [bookingCanceled, setBookingCanceled] = useState(false);
     
 
 
@@ -34,9 +36,13 @@ export const CancelTable = () => {
             </form>
     </div> 
     )}
-{isShown && (<div>
+{isShown && !bookingCanceled && (<div>
     <p>Din bokning: HÄR SKA DET STÅ NÅGOT</p>
-    <button>Ta bort bokning</button>
-</div>)}</>
+    <button onClick={() => setBookingCanceled(true)}>Ta bort bokning</button>
+</div>)}
+{bookingCanceled && (<div>
+<Confirmation></Confirmation>
+</div>)}
+</>
 
 }

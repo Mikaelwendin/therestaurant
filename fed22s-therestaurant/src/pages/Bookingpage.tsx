@@ -12,7 +12,7 @@ export const Bookingpage = () => {
         {!isBooking && !isCancel && (
             <button onClick={() => setIsShown(true)}>Boka bord</button>)}
         {isBooking && (<BookTable></BookTable>)}
-        {!isCancel && (
+        {!isCancel && !isBooking && (
             <button onClick={() => setIsCancel(true)}>Avboka bord</button>)}
         {isCancel && (<CancelTable></CancelTable>)}
 
