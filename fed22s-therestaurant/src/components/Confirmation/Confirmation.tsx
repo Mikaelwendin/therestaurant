@@ -1,9 +1,14 @@
 import { Link } from "react-router-dom"
+interface IConfirmationProps {
+    msg: string,
+}
 
-export const Confirmation = () => {
+
+
+export const Confirmation = ({msg}: IConfirmationProps) => {
     return <>
     <div>
-        <h1>Ditt bord är nu avbokat</h1>
+        <h1>Tack, {msg}</h1>
         <p>Clicka <Link to="/">här</Link> för att komma tillbaka till startsidan.</p>
     </div>
     

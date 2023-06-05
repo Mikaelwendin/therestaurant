@@ -2,12 +2,14 @@ import { ChangeEvent, FormEvent, useEffect, useState } from "react"
 import Calendar from "react-calendar";
 import { Booking, defaultBooking } from "../../models/booking";
 import { checkDate, checkTablesLeft, mockBookingData } from "../../functions/functions";
+import { Confirmation } from "../Confirmation/Confirmation";
 export const BookTable = () => {
 
     const [errMsg, setErrMsg] = useState("");
     const [testBool, setTestBool] = useState(false); //ska ha nytt namn
     const [dateState, setDateState] = useState(new Date());
     const [userInput, setUserInput] = useState<Booking>(defaultBooking)
+    const [isDone, setIsDone] = useState(false);
     useEffect(() => {
         const testfunc = () => { //ska ha nytt namn
         const test = checkDate(mockBookingData, userInput.date, userInput.time)
@@ -30,7 +32,8 @@ export const BookTable = () => {
 
     const handleSubmit = (e: FormEvent) => {
         e.preventDefault();
-        setUserInput({ ...userInput, date: dateState.toLocaleDateString()});  
+        setUserInput({ ...userInput, date: dateState.toLocaleDateString()}); 
+        setIsDone(true);  //IF success
     }
     console.log(testBool)
 
@@ -94,7 +97,7 @@ export const BookTable = () => {
             <h2>{errMsg}</h2>
         </div>)}
 
-        {testBool && (
+        {testBool && !isDone && (
             <form onSubmit={handleSubmit}>
                 <input
                     type="text"
@@ -116,12 +119,8 @@ export const BookTable = () => {
                 />
                 <button>Spara</button>
             </form>
-
-
-
-
         )}
-
+        {isDone && <Confirmation msg={"Ditt bord är nu bokat"}></Confirmation>}
 
     </>
 }
