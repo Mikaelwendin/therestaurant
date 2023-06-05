@@ -2,6 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const bookingRoutes = require("./routes/bookingRoutes");
+const { notFoundMiddleware } = require("./middleware/notFoundMiddleware");
 
 const app = express();
 
@@ -14,8 +15,9 @@ app.use((req, res, next) => {
 
 app.use("/api/v1/bookings", bookingRoutes);
 
-const port = process.env.PORT || 5000;
+app.use(notFoundMiddleware);
 
+const port = process.env.PORT || 5000;
 async function run() {
   try {
     mongoose.set("strictQuery", false);
