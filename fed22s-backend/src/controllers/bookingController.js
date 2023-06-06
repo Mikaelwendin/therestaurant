@@ -47,7 +47,7 @@ exports.createNewBooking = async (req, res) => { //Här är ett catch-block
   customApiError.statusCode = 500;  
 
 /*     return res.status(500).json({
-      message: error.message,  KAN MAN VÄL TA BORT?*/
+      message: error.message,  KAN MAN VÄL TA BORT? FRÅGA MAX*/
       return next(apiError);
     
   }
@@ -58,7 +58,6 @@ exports.createNewBooking = async (req, res) => { //Här är ett catch-block
 exports.updateBookingById = async (req, res) => {
   try{  
     const bookingId = req.params.bookingId;
-
     const filter = { _id: bookingId };
      const update = {
     date: req.body.date,
@@ -67,13 +66,21 @@ exports.updateBookingById = async (req, res) => {
     customer: req.body.customer,
   };
 
-  const booking = await Booking.findOneAndUpdate(filter, update, { new: true });
+  const booking = await Booking.findOneAndUpdate(filter, update, { new: true, });
+  
+
+  if (!booking) {//if booking?? Och kasta ut en ny notfounderror om id:t inte hittas
+    throw new NotFoundError("The booking you've searched for doesn't exist!");
   }
-  //if booking?? Och kasta ut en ny notfounderror om id:t inte hittas
+  
 
   return res.json(booking);
-  //skapa en next för att skicka vidare? 
+
+} catch(error) {
+  next(error);  //skapa en next för att skicka vidare? 
+}
 };
+
 
 exports.deleteBookingById = async (req, res, next) => {
   try {
