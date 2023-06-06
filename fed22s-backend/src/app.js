@@ -25,7 +25,7 @@ app.use((req, res, next) => {
 
 app.use("/api/v1/bookings", bookingRoutes);
 
-app.use(notFoundMiddleware);
+app.use(notFoundMiddleware);  //felhanteringen
 app.use(errorMiddleware);
 
 const port = process.env.PORT || 5000;

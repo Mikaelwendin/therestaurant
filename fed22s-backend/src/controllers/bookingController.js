@@ -29,7 +29,7 @@ exports.getBookingById = async (req, res) => {
   return res.status(200).json(booking);
 };
 
-exports.createNewBooking = async (req, res) => {
+exports.createNewBooking = async (req, res) => { //Här är ett catch-block
   // use custom error in this fn:?
   try {
     const newBooking = await Booking.create(req.body);
@@ -67,11 +67,15 @@ exports.updateBookingById = async (req, res) => {
 };
 
 exports.deleteBookingById = async (req, res) => {
-  const bookingId = req.params.bookingId;
+  try {
+        const bookingId = req.params.bookingId;
+        const bookingToDelete = await Booking.findByIdAndDelete(bookingId);
+        if (!bookingToDelete){
+          throw new NotFoundError ("Sorry, a booking with that ID doesn't exist!");
+        }
 
-  //if (!bookingToDelete) error finns ej
-
-  await Booking.findByIdAndDelete(bookingId);
-
-  return res.sendStatus(204);
+        return res.sendStatus(204);
+  }     catch (error) {
+    next(error);
+  }
 };
