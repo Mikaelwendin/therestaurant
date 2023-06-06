@@ -1,12 +1,16 @@
 const Booking = require("../models/Booking");
 const { NotFoundError, customApiError } = require("../utils/errors");
 
-exports.getAllBookings = async (req, res, next) => {
+exports.getAllBookings = async (req, res, next) => {//Asynkron funktion!
+  try {
+    const limit = Number(req.query.limit) || 10; //vilken limit har vi här?
+    const offset = Number(req.query.offset) || 0;
+    const query = Booking.find().limit(limit).skip(offset);
+  
   //limit?
   //offset?
 
-  const bookings = await Booking.find();
-
+  const bookings = await query.exec.find();
   const totalBookingsInDb = await Booking.countDocuments();
 
   return res.json({
@@ -14,8 +18,13 @@ exports.getAllBookings = async (req, res, next) => {
     meta: {
       total: totalBookingsInDb,
       count: bookings.length,
+      limit: limit,
+      offset: offset,
     },
   });
+} catch(error) {
+  next(error);
+  }
 };
 
 exports.getBookingById = async (req, res) => {
@@ -28,6 +37,7 @@ exports.getBookingById = async (req, res) => {
 
   return res.status(200).json(booking);
 };
+
 
 exports.createNewBooking = async (req, res) => { //Här är ett catch-block
   try {
