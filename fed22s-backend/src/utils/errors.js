@@ -38,4 +38,5 @@ module.exports = {
   NotFoundError,
   BadRequestError,
   ValidationError,
+  CustomAPIError,
 };

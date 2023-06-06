@@ -1,5 +1,5 @@
 const Booking = require("../models/Booking");
-const { NotFoundError } = require("../utils/errors");
+const { NotFoundError, customApiError } = require("../utils/errors");
 
 exports.getAllBookings = async (req, res, next) => {
   //limit?
@@ -30,7 +30,6 @@ exports.getBookingById = async (req, res) => {
 };
 
 exports.createNewBooking = async (req, res) => { //Här är ett catch-block
-  // use custom error in this fn:?
   try {
     const newBooking = await Booking.create(req.body);
 
@@ -44,11 +43,17 @@ exports.createNewBooking = async (req, res) => { //Här är ett catch-block
   } catch (error) {
     console.error(error);
 
-    return res.status(500).json({
-      message: error.message,
-    });
+  const apiError = new CustomError("Sadly there was an custom error happening here, please try create a new booking again!");
+  customApiError.statusCode = 500;  
+
+/*     return res.status(500).json({
+      message: error.message,  KAN MAN VÄL TA BORT?*/
+      return next(apiError);
+    
   }
 };
+
+
 
 exports.updateBookingById = async (req, res) => {
   try{  
@@ -65,8 +70,9 @@ exports.updateBookingById = async (req, res) => {
   const booking = await Booking.findOneAndUpdate(filter, update, { new: true });
   }
   //if booking?? Och kasta ut en ny notfounderror om id:t inte hittas
-  
+
   return res.json(booking);
+  //skapa en next för att skicka vidare? 
 };
 
 exports.deleteBookingById = async (req, res, next) => {
