@@ -33,3 +33,5 @@ exports.errorMiddleware = (error, req, res, next) => {
 
   return res.status(customError.statusCode).json(customError);
 };
+
+module.exports = errorMiddleware;

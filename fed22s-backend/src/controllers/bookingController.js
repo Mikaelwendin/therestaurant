@@ -29,19 +29,22 @@ exports.getAllBookings = async (req, res, next) => {//Asynkron funktion!
 exports.errorMiddleware = this.errorMiddleware;
 
 
-exports.getBookingById = async (req, res) => {
+exports.getBookingById = async (req, res, next) => {
   const bookingId = req.params.bookingId;
-
+try{
   const booking = await Booking.findById(bookingId);
 
   if (!booking)
     throw new NotFoundError("A booking with that ID does not exist");
 
   return res.status(200).json(booking);
-};
+} catch (error) {
+ next (error);
+}
+}; 
 
 
-exports.createNewBooking = async (req, res) => { //Här är ett catch-block
+exports.createNewBooking = async (req, res, next) => { //Här är ett catch-block
   try {
     const newBooking = await Booking.create(req.body);
 
@@ -67,7 +70,7 @@ exports.createNewBooking = async (req, res) => { //Här är ett catch-block
 
 
 
-exports.updateBookingById = async (req, res) => {
+exports.updateBookingById = async (req, res, next) => {
   try{  
     const bookingId = req.params.bookingId;
     const filter = { _id: bookingId };
