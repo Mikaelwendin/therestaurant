@@ -1,7 +1,7 @@
 const Booking = require("../models/Booking");
 const { NotFoundError } = require("../utils/errors");
 
-exports.getAllBookings = async (req, res) => {
+exports.getAllBookings = async (req, res, next) => {
   //limit?
   //offset?
 
@@ -51,10 +51,11 @@ exports.createNewBooking = async (req, res) => { //Här är ett catch-block
 };
 
 exports.updateBookingById = async (req, res) => {
-  const bookingId = req.params.bookingId;
+  try{  
+    const bookingId = req.params.bookingId;
 
-  const filter = { _id: bookingId };
-  const update = {
+    const filter = { _id: bookingId };
+     const update = {
     date: req.body.date,
     time: req.body.time,
     numberOfGuests: req.body.numberOfGuests,
@@ -62,11 +63,13 @@ exports.updateBookingById = async (req, res) => {
   };
 
   const booking = await Booking.findOneAndUpdate(filter, update, { new: true });
-
+  }
+  //if booking?? Och kasta ut en ny notfounderror om id:t inte hittas
+  
   return res.json(booking);
 };
 
-exports.deleteBookingById = async (req, res) => {
+exports.deleteBookingById = async (req, res, next) => {
   try {
         const bookingId = req.params.bookingId;
         const bookingToDelete = await Booking.findByIdAndDelete(bookingId);
