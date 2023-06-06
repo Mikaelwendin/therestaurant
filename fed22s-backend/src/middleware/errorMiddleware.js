@@ -1,5 +1,7 @@
 const { ValidationError } = require("../utils/errors");
 
+
+
 exports.errorMiddleware = (error, req, res, next) => {
   let customError = {
     statusCode: error.statusCode || 500,
@@ -31,3 +33,5 @@ exports.errorMiddleware = (error, req, res, next) => {
 
   return res.status(customError.statusCode).json(customError);
 };
+
+module.exports = errorMiddleware;
