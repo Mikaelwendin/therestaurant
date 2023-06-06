@@ -26,6 +26,8 @@ exports.getAllBookings = async (req, res, next) => {//Asynkron funktion!
   next(error);
   }
 };
+exports.errorMiddleware = this.errorMiddleware;
+
 
 exports.getBookingById = async (req, res) => {
   const bookingId = req.params.bookingId;
