@@ -1,5 +1,6 @@
 require("dotenv").config();
 require("express-async-errors");
+const cors = require("cors");
 const express = require("express");
 const mongoose = require("mongoose");
 const bookingRoutes = require("./routes/bookingRoutes");
@@ -9,7 +10,12 @@ const { errorMiddleware } = require("./middleware/errorMiddleware");
 const app = express();
 
 app.use(express.json());
-
+app.use(
+  cors({
+    origin: ["http://localhost:5173"],
+    methods: ["GET", "PUT", "POST", "DELETE"],
+  })
+);
 app.use((req, res, next) => {
   console.log(`Processing ${req.method} request to ${req.path}`);
   next();
@@ -26,7 +32,6 @@ async function run() {
     mongoose.set("strictQuery", false);
     const conn = await mongoose.connect(process.env.MONGO_CONNECTION_STRING);
     console.log(`MongoDB connected: ${conn.connection.host}`);
-
     app.listen(port, () => {
       console.log(`Server running on http://localhost:${port}`);
     });
@@ -34,5 +39,4 @@ async function run() {
     console.log(error);
   }
 }
-
 run();

@@ -3,13 +3,11 @@ const catchErrors = (fn) => {
     return fn(req, res, next).catch(next);
   };
 };
-
 class CustomAPIError extends Error {
   constructor(message) {
     super(message);
   }
 }
-
 class BadRequestError extends CustomAPIError {
   constructor(message) {
     super(message);
@@ -17,7 +15,6 @@ class BadRequestError extends CustomAPIError {
     this.name = "BadRequestError";
   }
 }
-
 class NotFoundError extends CustomAPIError {
   constructor(message) {
     super(message);
@@ -25,14 +22,12 @@ class NotFoundError extends CustomAPIError {
     this.name = "NotFoundError";
   }
 }
-
 class ValidationError extends BadRequestError {
   constructor(message, validationErrors) {
     super(message);
     this.validationErrors = validationErrors || [];
   }
 }
-
 module.exports = {
   catchErrors,
   NotFoundError,
