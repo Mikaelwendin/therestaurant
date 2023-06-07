@@ -48,27 +48,20 @@ export const BookTable = () => {
           setUserInput({ ...userInput, numberOfGuests: parseInt(value) });
         }
       };
-    console.log(userInput);
+      console.log(userInput)
 
     return <>
         {!testBool && (<div className="bookingBox">
             <form onSubmit={handleSubmit}>
                 <Calendar value={dateState} onClickDay={setDateState} minDate={new Date()} ></Calendar>
                 <select name="numberOfPeople" value={userInput.numberOfGuests} onChange={handleChange}>
-                    <option value=""> Please select number of guests</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
-                    <option value="11">11</option>
-                    <option value="12">12</option>
-                </select>
+            <option value="">Please select number of guests</option>
+            {[...Array(12)].map((_, index) => (
+              <option key={index + 1} value={String(index + 1)}>
+                {index + 1}
+              </option>
+            ))}
+          </select>
                 <label htmlFor="early">18:00</label>
                 <input
                     type="radio"
@@ -112,10 +105,10 @@ export const BookTable = () => {
                     onChange={handleChange}
                     name="email"
                 />
-                <button onClick={() => setIsDone(true)}>Spara</button>
+                <button>Spara</button>
             </form>
         )}
-        {isDone && testBool && <Confirmation name={userInput.customer.name} msg={"Ditt bord är nu bokat"}></Confirmation>}
+        {isDone && <Confirmation msg={"Ditt bord är nu bokat"}></Confirmation>}
 
     </>
 }
