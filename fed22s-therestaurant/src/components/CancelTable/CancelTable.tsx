@@ -37,7 +37,7 @@ export const CancelTable = () => {
     </div> 
     )}
 {isShown && !bookingCanceled && (<div>
-    <p>Din bokning: HÄR SKA DET STÅ NÅGOT</p>
+    <p>Din bokning: --HÄR SKA DET STÅ NÅGOT!--</p>
     <button onClick={() => setBookingCanceled(true)}>Ta bort bokning</button>
 </div>)}
 {bookingCanceled && (<div>

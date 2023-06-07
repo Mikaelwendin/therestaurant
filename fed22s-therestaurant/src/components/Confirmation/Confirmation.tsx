@@ -1,14 +1,15 @@
 import { Link } from "react-router-dom"
 interface IConfirmationProps {
     msg: string,
+    name?: string;
 }
 
 
 
-export const Confirmation = ({msg}: IConfirmationProps) => {
+export const Confirmation = ({msg, name}: IConfirmationProps) => {
     return <>
     <div>
-        <h1>Tack, {msg}</h1>
+        <h1>Tack {name}, {msg}</h1>
         <p>Clicka <Link to="/">här</Link> för att komma tillbaka till startsidan.</p>
     </div>
     

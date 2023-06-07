@@ -33,33 +33,28 @@ export const BookTable = () => {
     const handleSubmit = (e: FormEvent) => {
         e.preventDefault();
         setUserInput({ ...userInput, date: dateState.toLocaleDateString()}); 
-        setIsDone(true);  //IF success
+        //setIsDone(true);  //IF success
     }
     console.log(testBool)
 
-    const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-
-        const value = e.target.name;
-
-        if (e.target.type === "text") {
-            setUserInput({ ...userInput, customer: { ...userInput.customer, [value]: e.target.value } })
+    const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+        const { name, type, value } = e.target;
+      
+        if (type === "text") {
+          setUserInput({ ...userInput, customer: { ...userInput.customer, [name]: value } });
+        } else if (type === "radio") {
+          setUserInput({ ...userInput, time: value });
+        } else if (type === "select-one") {
+          setUserInput({ ...userInput, numberOfGuests: parseInt(value) });
         }
-        if (e.target.type === "radio") {
-            setUserInput({ ...userInput, time: e.target.value })
-        }
-    }
-    const handleSelect = (e: ChangeEvent<HTMLSelectElement>) => {
-
-        setUserInput({ ...userInput, numberOfGuests: parseInt(e.target.value) });
-
-    }
+      };
     console.log(userInput);
 
     return <>
         {!testBool && (<div className="bookingBox">
             <form onSubmit={handleSubmit}>
                 <Calendar value={dateState} onClickDay={setDateState} minDate={new Date()} ></Calendar>
-                <select name="numberOfPeople" value={userInput.numberOfGuests} onChange={handleSelect}>
+                <select name="numberOfPeople" value={userInput.numberOfGuests} onChange={handleChange}>
                     <option value=""> Please select number of guests</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -117,10 +112,10 @@ export const BookTable = () => {
                     onChange={handleChange}
                     name="email"
                 />
-                <button>Spara</button>
+                <button onClick={() => setIsDone(true)}>Spara</button>
             </form>
         )}
-        {isDone && <Confirmation msg={"Ditt bord är nu bokat"}></Confirmation>}
+        {isDone && testBool && <Confirmation name={userInput.customer.name} msg={"Ditt bord är nu bokat"}></Confirmation>}
 
     </>
 }
