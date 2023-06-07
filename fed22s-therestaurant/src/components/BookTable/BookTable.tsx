@@ -6,6 +6,10 @@ import { Confirmation } from "../Confirmation/Confirmation";
 import { BookingSelect } from "../BookingSelect/BookingSelect";
 import { BookingRadio } from "../BookingRadio/BookingRadio";
 import { BookingInput } from "../BookingInput/BookingInput";
+
+
+const axios = import('axios');
+
 export const BookTable = () => {
 
     const [userInput, setUserInput] = useState<Booking>(defaultBooking)
@@ -15,43 +19,49 @@ export const BookTable = () => {
     const [isDone, setIsDone] = useState(false);
     useEffect(() => {
         const testfunc = () => { //ska ha nytt namn
-        const test = checkDate(mockBookingData, userInput.date, userInput.time)
-        const tablesLeft = checkTablesLeft(test)
-        if (tablesLeft === 0) {
-            setTestBool(false)
-            setUserInput(defaultBooking)
-            setErrMsg("Det finns inga bord att boka den dagen!");
-        }
-        if (userInput.numberOfGuests > 6 && tablesLeft < 2) {
-            setErrMsg("Vi har tyvärr bara ett bord ledigt, till max 6 gäster!");
-            setUserInput(defaultBooking)
-        }
-        else setTestBool(true);
+            const test = checkDate(mockBookingData, userInput.date, userInput.time)
+            const tablesLeft = checkTablesLeft(test)
+            if (tablesLeft === 0) {
+                setTestBool(false)
+                setUserInput(defaultBooking)
+                setErrMsg("Det finns inga bord att boka den dagen!");
+            }
+            if (userInput.numberOfGuests > 6 && tablesLeft < 2) {
+                setErrMsg("Vi har tyvärr bara ett bord ledigt, till max 6 gäster!");
+                setUserInput(defaultBooking)
+            }
+            else setTestBool(true);
         }
         if (userInput.date) {
             testfunc()
         }
     }, [userInput])
 
+    /*     axios
+        .get("https://finalspaceapi.com/api/v0/character/?limit=2")
+        .then(function (response) {
+          console.log(response); HÄR SKA DEN TESTAS OCH VARA UP AND RUNNING OCH FUNGERA MOT BACKENDEN.
+        }); */
+
     const handleSubmit = (e: FormEvent) => {
         e.preventDefault();
-        setUserInput({ ...userInput, date: dateState.toLocaleDateString()}); 
+        setUserInput({ ...userInput, date: dateState.toLocaleDateString() });
         //setIsDone(true);  //IF success
     }
     console.log(testBool)
 
     const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         const { name, type, value } = e.target;
-      
+
         if (type === "text") {
-          setUserInput({ ...userInput, customer: { ...userInput.customer, [name]: value } });
+            setUserInput({ ...userInput, customer: { ...userInput.customer, [name]: value } });
         } else if (type === "radio") {
-          setUserInput({ ...userInput, time: value });
+            setUserInput({ ...userInput, time: value });
         } else if (type === "select-one") {
-          setUserInput({ ...userInput, numberOfGuests: parseInt(value) });
+            setUserInput({ ...userInput, numberOfGuests: parseInt(value) });
         }
-      };
-      console.log(userInput)
+    };
+    console.log(userInput)
 
     return <>
         {!testBool && (<div className="bookingBox">
