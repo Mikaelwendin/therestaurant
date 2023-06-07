@@ -1,12 +1,13 @@
+
 import { useState } from "react";
 import { BookTable } from "../components/BookTable/BookTable";
 import { CancelTable } from "../components/CancelTable/CancelTable";
+
 
 export const Bookingpage = () => {
 
     const [isBooking, setIsShown] = useState(false);
     const [isCancel, setIsCancel] = useState(false);
-
 
     return <>
         {!isBooking && !isCancel && (
@@ -16,6 +17,11 @@ export const Bookingpage = () => {
             <button onClick={() => setIsCancel(true)}>Avboka bord</button>)}
         {isCancel && (<CancelTable></CancelTable>)}
 
+
+
+
     </>;
+
+
 
 }
