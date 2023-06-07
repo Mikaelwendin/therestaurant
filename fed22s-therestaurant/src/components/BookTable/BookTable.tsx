@@ -3,12 +3,15 @@ import Calendar from "react-calendar";
 import { Booking, defaultBooking } from "../../models/booking";
 import { checkDate, checkTablesLeft, mockBookingData } from "../../functions/functions";
 import { Confirmation } from "../Confirmation/Confirmation";
+import { BookingSelect } from "../BookingSelect/BookingSelect";
+import { BookingRadio } from "../BookingRadio/BookingRadio";
+import { BookingInput } from "../BookingInput/BookingInput";
 export const BookTable = () => {
 
+    const [userInput, setUserInput] = useState<Booking>(defaultBooking)
     const [errMsg, setErrMsg] = useState("");
     const [testBool, setTestBool] = useState(false); //ska ha nytt namn
     const [dateState, setDateState] = useState(new Date());
-    const [userInput, setUserInput] = useState<Booking>(defaultBooking)
     const [isDone, setIsDone] = useState(false);
     useEffect(() => {
         const testfunc = () => { //ska ha nytt namn
@@ -54,32 +57,8 @@ export const BookTable = () => {
         {!testBool && (<div className="bookingBox">
             <form onSubmit={handleSubmit}>
                 <Calendar value={dateState} onClickDay={setDateState} minDate={new Date()} ></Calendar>
-                <select name="numberOfPeople" value={userInput.numberOfGuests} onChange={handleChange}>
-            <option value="">Please select number of guests</option>
-            {[...Array(12)].map((_, index) => (
-              <option key={index + 1} value={String(index + 1)}>
-                {index + 1}
-              </option>
-            ))}
-          </select>
-                <label htmlFor="early">18:00</label>
-                <input
-                    type="radio"
-                    value="18:00"
-                    onChange={handleChange}
-                    name="time"
-                    id="early"
-
-                />
-                <label htmlFor="late">21:00</label>
-                <input
-                    type="radio"
-                    value="21:00"
-                    onChange={handleChange}
-                    name="time"
-                    id="late"
-
-                />
+                <BookingSelect userInput={userInput} handleChange={handleChange} />
+                <BookingRadio handleChange={handleChange} />
                 <button disabled={!userInput.time || !userInput.date && userInput.numberOfGuests < 1}>Go</button>
             </form>
             <h2>{errMsg}</h2>
@@ -87,25 +66,7 @@ export const BookTable = () => {
 
         {testBool && !isDone && (
             <form onSubmit={handleSubmit}>
-                <input
-                    type="text"
-                    value={userInput.customer.name}
-                    onChange={handleChange}
-                    name="name"
-                />
-                <input
-                    type="text"
-                    value={userInput.customer.phone}
-                    onChange={handleChange}
-                    name="phone"
-                />
-                <input
-                    type="text"
-                    value={userInput.customer.email}
-                    onChange={handleChange}
-                    name="email"
-                />
-                <button>Spara</button>
+                <BookingInput userInput={userInput} handleChange={handleChange}></BookingInput>
             </form>
         )}
         {isDone && <Confirmation msg={"Ditt bord är nu bokat"}></Confirmation>}
