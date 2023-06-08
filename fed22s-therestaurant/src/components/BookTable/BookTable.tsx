@@ -45,7 +45,9 @@ export const BookTable = () => {
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     setUserInput({ ...userInput, date: dateState.toLocaleDateString() });
-    if (testBool) createNewBooking(userInput)
+    if (testBool) {
+      createNewBooking(userInput)}
+      setIsDone(true);
   }
 
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
