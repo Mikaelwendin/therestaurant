@@ -1,27 +1,27 @@
-import { Booking } from "../models/booking";
+import { IBooking } from "../models/IBooking";
 
-export const checkDate = (list:Booking[], date:string, time:string) => {
- const filtered = list.filter(dates => {
-    return dates.date === date && dates.time === time;
-  })
-return filtered;
-}
+export const checkDate = (list:IBooking[], date:string, time:string) => {
+  const filtered = list.filter(dates => {
+     return dates.date === date && dates.time === time;
+   })
+ return filtered;
+ }
+ 
+ export const checkTablesLeft = (list: IBooking[]) => {
+   const tableCapacity = 6;
+   let numberOfTables = 15;
+   
+   for (let i = 0; i < list.length; i++) {
+     const guestsInBooking = list[i].numberOfGuests;
+     const tablesNeeded = Math.ceil(guestsInBooking / tableCapacity);
+     
+     numberOfTables -= tablesNeeded;
+   }
+   
+   return numberOfTables >= 0 ? numberOfTables : 0;
+ }
 
-export const checkTablesLeft = (list: Booking[]) => {
-  const tableCapacity = 6;
-  let numberOfTables = 15;
-  
-  for (let i = 0; i < list.length; i++) {
-    const guestsInBooking = list[i].numberOfGuests;
-    const tablesNeeded = Math.ceil(guestsInBooking / tableCapacity);
-    
-    numberOfTables -= tablesNeeded;
-  }
-  
-  return numberOfTables >= 0 ? numberOfTables : 0;
-}
-
-export const mockBookingData:Booking[] = [
+export const mockBookingData:IBooking[] = [
     {
       date: "2023-06-10",
       time: "18:00",

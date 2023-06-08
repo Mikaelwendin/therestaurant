@@ -1,4 +1,4 @@
-export class Customer {
+/* export class Customer {
     constructor(
         public name: string,
         public email: string,
@@ -6,4 +6,4 @@ export class Customer {
     )
     {}
 }
-export const defaultCustomer = new Customer("","","");
+export const defaultCustomer = new Customer("","",""); */

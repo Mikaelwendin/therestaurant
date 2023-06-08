@@ -1,3 +1,4 @@
+/* import { IBooking } from "./IBooking";
 import { Customer, defaultCustomer } from "./customer";
 
 export class Booking {
@@ -9,4 +10,4 @@ export class Booking {
     )
     {}
 }
-export let defaultBooking = new Booking("", "", 0, defaultCustomer);
+export let defaultBooking:IBooking = ("", "", 0, defaultCustomer); */

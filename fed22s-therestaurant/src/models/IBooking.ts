@@ -1,8 +1,14 @@
-import { Customer } from "./customer";
-
 export interface IBooking {
-  date: string;
-  time: string;
-  numberOfGuests: number;
-  customer: Customer;
+  date: string,
+  time: string,
+  numberOfGuests: number,
+  customer: ICustomer;
 }
+export interface ICustomer {
+  name: string,
+  email: string,
+  phone: string;
+
+}
+export const defaultCustomer:ICustomer= {name:"", email:"", phone:""}
+export const defaultBooking:IBooking = {date: "", time: "", numberOfGuests:0, customer: defaultCustomer}

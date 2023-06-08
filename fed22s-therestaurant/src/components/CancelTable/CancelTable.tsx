@@ -1,5 +1,6 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 import { Confirmation } from "../Confirmation/Confirmation";
+import { deleteBookingById } from "../../services/BookingService";
 
 export const CancelTable = () => {
 
@@ -16,7 +17,7 @@ export const CancelTable = () => {
     const handleSubmit = (e:FormEvent) => {
 
         e.preventDefault();
-        //API CALL för att deleta bokning
+        deleteBookingById(bookingId)
         setBookingId("");
         setIsShown(true)
 
