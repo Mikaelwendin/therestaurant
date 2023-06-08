@@ -12,14 +12,14 @@ export const CancelTable = () => {
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
 
-        setBookingId(e.target.value)
+        setBookingId(e.target.value)    //Input för bokningsnummer.
     }
     const handleSubmit = (e:FormEvent) => {
 
         e.preventDefault();
-        deleteBookingById(bookingId)
+        deleteBookingById(bookingId)    //Delete av input nummer. behöver errorhandling kanske.
         setBookingId("");
-        setIsShown(true)
+        setIsShown(true)            //När vi är klara får vi confirmation av borttagen bokning i HTML nedan.
 
     }
     return  <>{!isShown && (

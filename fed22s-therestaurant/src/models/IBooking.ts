@@ -1,4 +1,5 @@
 export interface IBooking {
+  [x: string]: any;
   date: string,
   time: string,
   numberOfGuests: number,

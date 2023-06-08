@@ -1,5 +1,8 @@
 import { IBooking } from "../models/IBooking";
 
+
+//Checkdate tar emot en lista och tid + datum och jämför dessa, ger tillbaka en filtrerad lista med bokningar som passar in på kriterierna.
+
 export const checkDate = (list:IBooking[], date:string, time:string) => {
   const filtered = list.filter(dates => {
      return dates.date === date && dates.time === time;
@@ -7,7 +10,9 @@ export const checkDate = (list:IBooking[], date:string, time:string) => {
  return filtered;
  }
  
- export const checkTablesLeft = (list: IBooking[]) => {
+ //Checktables tar emot en lista som kontrollerar om det finns bord kvar. Ger tillbaka antal lediga bord.
+
+ export const checkTablesLeft = (list: IBooking[]) => {     
    const tableCapacity = 6;
    let numberOfTables = 15;
    
@@ -21,6 +26,9 @@ export const checkDate = (list:IBooking[], date:string, time:string) => {
    return numberOfTables >= 0 ? numberOfTables : 0;
  }
 
+
+
+//Mockdata som för närvarande inte används.
 export const mockBookingData:IBooking[] = [
     {
       date: "2023-06-10",
