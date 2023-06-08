@@ -14,6 +14,7 @@ export const BookTable = () => {
   const [testBool, setTestBool] = useState(false); //ska ha nytt namn
   const [dateState, setDateState] = useState(new Date());
   const [isDone, setIsDone] = useState(false);
+  const [testId, setTestId] = useState<IBooking>(defaultBooking);
 
   useEffect(() => {
     const testfunc = async () => {
@@ -43,12 +44,13 @@ export const BookTable = () => {
     }
   }, [userInput]);
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setUserInput({ ...userInput, date: dateState.toLocaleDateString() });
     if (testBool) {
-      createNewBooking(userInput)
+      setTestId(await createNewBooking(userInput))
       setIsDone(true)
+
     }
   }
 
@@ -80,7 +82,7 @@ export const BookTable = () => {
         <BookingInput userInput={userInput} handleChange={handleChange}></BookingInput>
       </form>
     )}
-    {isDone && testBool && <Confirmation name={userInput.customer.name} msg={"Ditt bord är nu bokat"}></Confirmation>}
+    {isDone && testBool && <Confirmation name={testId.customer.name} msg={`Ditt bord är nu bokat med bokningsnummer: ${testId._id}`}></Confirmation>}
 
   </>
 }
