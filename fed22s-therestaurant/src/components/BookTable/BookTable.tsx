@@ -7,6 +7,7 @@ import { BookingRadio } from "../BookingRadio/BookingRadio";
 import { BookingInput } from "../BookingInput/BookingInput";
 import { createNewBooking, getAllBookings } from "../../services/BookingService";
 import { IBooking, defaultBooking } from "../../models/IBooking";
+import { axios } from "axios";
 export const BookTable = () => {
 
   const [userInput, setUserInput] = useState<IBooking>(defaultBooking)
@@ -42,12 +43,16 @@ export const BookTable = () => {
     }
   }, [userInput]);
 
-  const handleSubmit = (e: FormEvent) => {
+
+
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setUserInput({ ...userInput, date: dateState.toLocaleDateString() });
+    const response = await axios.post("http://localhost:4000/api/v1/bookings", userInput); //Kopplar upp oss mot backend
     if (testBool) {
-      createNewBooking(userInput)}
-      setIsDone(true);
+      createNewBooking(userInput)
+    }
+    setIsDone(true);
   }
 
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
