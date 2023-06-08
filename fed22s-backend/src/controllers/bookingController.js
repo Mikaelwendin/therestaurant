@@ -8,14 +8,16 @@ exports.getAllBookings = async (req, res) => {
   const bookings = await Booking.find();
 
   const totalBookingsInDb = await Booking.countDocuments();
-
-  return res.json({
-    data: bookings,
-    meta: {
-      total: totalBookingsInDb,
-      count: bookings.length,
-    },
-  });
+/*
+return res.json({
+  data: bookings,
+  meta: {
+    total: totalBookingsInDb,
+    count: bookings.length,
+  },
+});
+*/
+return res.json(bookings)
 };
 
 exports.getBookingById = async (req, res) => {
