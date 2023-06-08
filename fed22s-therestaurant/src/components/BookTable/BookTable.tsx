@@ -8,7 +8,7 @@ import { BookingRadio } from "../BookingRadio/BookingRadio";
 import { BookingInput } from "../BookingInput/BookingInput";
 
 
-const axios = import('axios');
+import axios from 'axios';
 
 export const BookTable = () => {
 
@@ -37,15 +37,12 @@ export const BookTable = () => {
         }
     }, [userInput])
 
-    /*     axios
-        .get("https://finalspaceapi.com/api/v0/character/?limit=2")
-        .then(function (response) {
-          console.log(response); HÄR SKA DEN TESTAS OCH VARA UP AND RUNNING OCH FUNGERA MOT BACKENDEN.
-        }); */
-
-    const handleSubmit = (e: FormEvent) => {
+    const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();
         setUserInput({ ...userInput, date: dateState.toLocaleDateString() });
+
+        const response = await axios.post("http://localhost:4000/api/v1/bookings", userInput); //Kopplar upp oss mot backend
+
         //setIsDone(true);  //IF success
     }
     console.log(testBool)
