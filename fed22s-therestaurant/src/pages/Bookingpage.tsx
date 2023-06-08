@@ -1,6 +1,12 @@
-import { useState } from "react";
+
+import { useState, useEffect } from "react";
 import { BookTable } from "../components/BookTable/BookTable";
 import { CancelTable } from "../components/CancelTable/CancelTable";
+import axios from "axios";
+import { IBooking } from "../models/IBooking";
+import { defaultCustomer } from "../models/customer";
+
+
 
 export const Bookingpage = () => {
 
@@ -16,6 +22,11 @@ export const Bookingpage = () => {
             <button onClick={() => setIsCancel(true)}>Avboka bord</button>)}
         {isCancel && (<CancelTable></CancelTable>)}
 
+
+
+
     </>;
+
+
 
 }
