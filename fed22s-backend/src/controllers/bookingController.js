@@ -18,6 +18,7 @@ return res.json({
 });
 */
 return res.json(bookings)
+
 };
 
 exports.getBookingById = async (req, res) => {
