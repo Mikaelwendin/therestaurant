@@ -7,7 +7,6 @@ import { BookingRadio } from "../BookingRadio/BookingRadio";
 import { BookingInput } from "../BookingInput/BookingInput";
 import { createNewBooking, getAllBookings } from "../../services/BookingService";
 import { IBooking, defaultBooking } from "../../models/IBooking";
-import { axios } from "axios";
 export const BookTable = () => {
 
   const [userInput, setUserInput] = useState<IBooking>(defaultBooking)
@@ -19,6 +18,7 @@ export const BookTable = () => {
   useEffect(() => {
     const testfunc = async () => {
       const data: IBooking[] = await getAllBookings();
+      console.log(data);
       if (data) {
         const test = checkDate(data, userInput.date, userInput.time);
         const tablesLeft = checkTablesLeft(test);
@@ -43,16 +43,13 @@ export const BookTable = () => {
     }
   }, [userInput]);
 
-
-
-  const handleSubmit = async (e: FormEvent) => {
+  const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     setUserInput({ ...userInput, date: dateState.toLocaleDateString() });
-    const response = await axios.post("http://localhost:4000/api/v1/bookings", userInput); //Kopplar upp oss mot backend
     if (testBool) {
       createNewBooking(userInput)
+      setIsDone(true)
     }
-    setIsDone(true);
   }
 
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
@@ -83,7 +80,7 @@ export const BookTable = () => {
         <BookingInput userInput={userInput} handleChange={handleChange}></BookingInput>
       </form>
     )}
-    {isDone && <Confirmation name={userInput.customer.name} msg={"Ditt bord är nu bokat"}></Confirmation>}
+    {isDone && testBool && <Confirmation name={userInput.customer.name} msg={"Ditt bord är nu bokat"}></Confirmation>}
 
   </>
 }
