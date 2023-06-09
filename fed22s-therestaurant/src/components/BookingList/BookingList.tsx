@@ -2,6 +2,9 @@ import { useEffect, useState } from "react";
 import { getAllBookings } from "../../services/BookingService";
 import { IBooking } from "../../models/IBooking";
 import { BookingView } from "../BookingView/BookingView";
+import { StyledTable } from "../Styled/StyledTable";
+import { StyledTr } from "../Styled/StyledTr";
+import { StyledTh } from "../Styled/StyledTh";
 
 export const BookingList = () => {
   //Temporary state
@@ -21,5 +24,17 @@ export const BookingList = () => {
     <BookingView booking={booking}></BookingView>
   ));
 
-  return <div>{html}</div>;
+  return (
+    <StyledTable>
+      <StyledTr>
+        <StyledTh>Datum</StyledTh>
+        <StyledTh>Tid</StyledTh>
+        <StyledTh>Antal</StyledTh>
+        <StyledTh>Namn</StyledTh>
+        <StyledTh>E-post</StyledTh>
+        <StyledTh>Telefon</StyledTh>
+      </StyledTr>
+      {html}
+    </StyledTable>
+  );
 };
