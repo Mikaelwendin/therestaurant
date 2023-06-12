@@ -1,24 +1,12 @@
-import { useEffect, useState } from "react";
-import { getAllBookings } from "../../services/BookingService";
-import { IBooking } from "../../models/IBooking";
+import { useContext } from "react";
 import { BookingView } from "../BookingView/BookingView";
 import { StyledTable } from "../Styled/StyledTable";
 import { StyledTr } from "../Styled/StyledTr";
 import { StyledTh } from "../Styled/StyledTh";
+import { BookingsContext } from "../../contexts/BookingsContext";
 
 export const BookingList = () => {
-  //Temporary state
-  const [bookings, setBookings] = useState<IBooking[]>([]);
-
-  // Temporary useEffect for testing
-  useEffect(() => {
-    const testFunc = async () => {
-      const data = await getAllBookings();
-      setBookings(data);
-    };
-
-    testFunc();
-  }, []);
+  const bookings = useContext(BookingsContext);
 
   const html = bookings.map((booking) => (
     <BookingView booking={booking}></BookingView>
