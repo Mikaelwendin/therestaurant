@@ -3,6 +3,8 @@ import GreenButton from '../components/GreenBtn';
 import RedButton from '../components/RedBtn';
 import NeutralButton from '../components/NeutralBtn';
 
+
+
 export const Startpage = () => {
   return (
     <>
