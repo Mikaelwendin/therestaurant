@@ -7,6 +7,10 @@ export const CurrentBookingReducer = (
 ): IBooking => {
   switch (action.type) {
     case "gotbooking": {
+      console.log(
+        "Case gotbooking har been run and is returning" + action.payload
+      );
+
       return JSON.parse(action.payload);
     }
     //default: (felhantering)
