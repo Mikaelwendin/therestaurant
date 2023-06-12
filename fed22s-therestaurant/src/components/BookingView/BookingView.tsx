@@ -13,9 +13,15 @@ interface IBookingViewProps {
 }
 
 export const BookingView = ({ booking }: IBookingViewProps) => {
-  const dispatch = useContext(BookingDispatchContext);
+  const dispatchBookings = useContext(BookingDispatchContext);
 
   const id = booking._id || "";
+
+  const handleClickChange = async () => {
+    console.log("handleClickChange has been run with id: " + id);
+
+    return;
+  };
 
   const handleClickCancel = async () => {
     console.log("handleClickCancel has been run with id: " + id);
@@ -24,7 +30,7 @@ export const BookingView = ({ booking }: IBookingViewProps) => {
 
     const bookingsFromApi = await getAllBookings();
 
-    dispatch({
+    dispatchBookings({
       type: "gotbookings",
       payload: JSON.stringify(bookingsFromApi),
     });
@@ -39,7 +45,7 @@ export const BookingView = ({ booking }: IBookingViewProps) => {
       <StyledTd>{booking.customer.email}</StyledTd>
       <StyledTd>{booking.customer.phone}</StyledTd>
       <StyledTd>
-        <button>Ändra</button>
+        <button onClick={handleClickChange}>Ändra</button>
       </StyledTd>
       <StyledTd>
         <button onClick={handleClickCancel}>Avboka</button>
