@@ -19,13 +19,13 @@ export const CancelTable = () => {
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
 
-        setBookingId(e.target.value)    //Input för bokningsnummer.
+        setBookingId(e.target.value)
     }
     const handleSubmit = async (e:FormEvent) => {
 
         e.preventDefault();
         setBooking(await getBookingById(bookingId))
-        setIsShown(true)            //När vi är klara får vi confirmation av borttagen bokning i HTML nedan.
+        setIsShown(true)
 
     }
     return  <>{!isShown && (
@@ -55,8 +55,7 @@ export const CancelTable = () => {
     <button onClick={deleteBooking}>Ta bort bokning</button>
 </div>)}
 {bookingCanceled && (<div>
-<Confirmation msg={"Ditt bord är nu avbokat"}></Confirmation>
+<Confirmation name={booking.customer.name} msg={"Ditt bord är nu avbokat"}></Confirmation>
 </div>)}
 </>
-
 }
