@@ -17,6 +17,8 @@ export const BookTable = () => {
   const [testId, setTestId] = useState<IBooking>(defaultBooking);
   const [bookings, setBookings] = useState<IBooking[]>([]);
   
+console.log(bookings)
+
   useEffect(() => {
     const loadData = async()=> {
         const data: IBooking[] = await getAllBookings();
