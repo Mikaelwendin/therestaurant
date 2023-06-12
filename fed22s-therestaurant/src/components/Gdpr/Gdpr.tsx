@@ -10,6 +10,6 @@ export const Gdpr = () => {
             Vänliga hälsningar,
         </p>
             <input type="radio" id="approve"></input>
-            <label for="approve">Godkänn</label></div>
+            <label htmlFor="approve">Godkänn</label></div>
     </>)
 }
