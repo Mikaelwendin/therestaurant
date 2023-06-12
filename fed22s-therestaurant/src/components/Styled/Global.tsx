@@ -16,8 +16,8 @@ html {
 }
 
 body {
-    font-family: 'Montserrat', sans-serif;
-    
+  color: #FFFF;
+  font-family: 'Montserrat', sans-serif;
   background-color:  #03071E;
 }
 
