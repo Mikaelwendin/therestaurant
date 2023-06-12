@@ -15,18 +15,20 @@ export const BookingList = () => {
   //Keys på styledTh i nedan html med?
 
   return (
-    <StyledTable>
-      <thead>
-        <StyledTr>
-          <StyledTh>Datum</StyledTh>
-          <StyledTh>Tid</StyledTh>
-          <StyledTh>Antal</StyledTh>
-          <StyledTh>Namn</StyledTh>
-          <StyledTh>E-post</StyledTh>
-          <StyledTh>Telefon</StyledTh>
-        </StyledTr>
-      </thead>
-      <tbody>{html}</tbody>
-    </StyledTable>
+    <>
+      <StyledTable>
+        <thead>
+          <StyledTr>
+            <StyledTh>Datum</StyledTh>
+            <StyledTh>Tid</StyledTh>
+            <StyledTh>Antal</StyledTh>
+            <StyledTh>Namn</StyledTh>
+            <StyledTh>E-post</StyledTh>
+            <StyledTh>Telefon</StyledTh>
+          </StyledTr>
+        </thead>
+        <tbody>{html}</tbody>
+      </StyledTable>
+    </>
   );
 };
