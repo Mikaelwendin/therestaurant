@@ -9,20 +9,24 @@ export const BookingList = () => {
   const bookings = useContext(BookingsContext);
 
   const html = bookings.map((booking) => (
-    <BookingView booking={booking}></BookingView>
+    <BookingView key={booking.id} booking={booking}></BookingView>
   ));
+
+  //Keys på styledTh i nedan html med?
 
   return (
     <StyledTable>
-      <StyledTr>
-        <StyledTh>Datum</StyledTh>
-        <StyledTh>Tid</StyledTh>
-        <StyledTh>Antal</StyledTh>
-        <StyledTh>Namn</StyledTh>
-        <StyledTh>E-post</StyledTh>
-        <StyledTh>Telefon</StyledTh>
-      </StyledTr>
-      {html}
+      <thead>
+        <StyledTr>
+          <StyledTh>Datum</StyledTh>
+          <StyledTh>Tid</StyledTh>
+          <StyledTh>Antal</StyledTh>
+          <StyledTh>Namn</StyledTh>
+          <StyledTh>E-post</StyledTh>
+          <StyledTh>Telefon</StyledTh>
+        </StyledTr>
+      </thead>
+      <tbody>{html}</tbody>
     </StyledTable>
   );
 };
