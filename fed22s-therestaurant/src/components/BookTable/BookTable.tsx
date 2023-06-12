@@ -1,6 +1,6 @@
 import { ChangeEvent, FormEvent, useEffect, useState } from "react"
 import Calendar from "react-calendar";
-import { checkDate, checkTablesLeft, mockBookingData } from "../../functions/functions";
+import { checkDate, checkTablesLeft } from "../../functions/functions";
 import { Confirmation } from "../Confirmation/Confirmation";
 import { BookingSelect } from "../BookingSelect/BookingSelect";
 import { BookingRadio } from "../BookingRadio/BookingRadio";
@@ -17,13 +17,18 @@ export const BookTable = () => {
   const [dateState, setDateState] = useState(new Date());
   const [isDone, setIsDone] = useState(false);
   const [testId, setTestId] = useState<IBooking>(defaultBooking);
+  const [bookings, setBookings] = useState<IBooking[]>([]);
+  
 
   //useEffect. duh.
   useEffect(() => {
-    const testfunc = async () => {
-      const data: IBooking[] = await getAllBookings();  //Spara bokningar i en array
-      if (data) { //OM variabel inte är null/undefined
-        const test = checkDate(data, userInput.date, userInput.time);   //Kontrollera array mot användarens valda datum och tid. Ger tillbaka en lista
+    const loadData = async()=> {
+        const data: IBooking[] = await getAllBookings();  //Spara bokningar i en array
+        setBookings(data)
+    }
+    const testfunc = async () => {   
+      if (bookings) { //OM variabel inte är null/undefined
+        const test = checkDate(bookings, userInput.date, userInput.time);   //Kontrollera array mot användarens valda datum och tid. Ger tillbaka en lista
         const tablesLeft = checkTablesLeft(test); //Kontrollera om det finns bord kvar på den filtrerade listan
 
         if (tablesLeft === 0) {       //OM inte, åtyterställ userinput och ge felmeddelande
@@ -41,6 +46,10 @@ export const BookTable = () => {
       }
     };
 
+    if (bookings.length < 1) {
+      loadData();
+    }
+
     if (userInput.date) {   //Funktionen körs när användaren valt ett datum.
       testfunc();
     }
@@ -52,7 +61,6 @@ export const BookTable = () => {
     if (testBool) {
       setTestId(await createNewBooking(userInput))      //OM alla fälten är ifyllda, posta bokningen
       setIsDone(true)     //isDone kör confirmation-componenten.
-
     }
   }
 
