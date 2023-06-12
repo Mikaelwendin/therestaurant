@@ -1,4 +1,10 @@
-export const Gdpr = () => {
+import { ChangeEvent } from "react";
+
+interface IGrdpProps {
+    switchFunc(e: ChangeEvent<HTMLInputElement>): void;
+}
+
+export const Gdpr = ({switchFunc}: IGrdpProps) => {
     return (<>
         <div><p>
             Hej,
@@ -15,7 +21,7 @@ export const Gdpr = () => {
 
             Vänliga hälsningar,
         </p>
-            <input type="radio" id="approve"></input>
-            <label for="approve">Godkänn</label></div>
+            <input type="checkbox" id="approve" onChange={switchFunc}></input>
+            <label htmlFor="approve">Godkänn</label></div>
     </>)
 }

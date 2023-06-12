@@ -9,38 +9,34 @@ import { createNewBooking, getAllBookings } from "../../services/BookingService"
 import { IBooking, defaultBooking } from "../../models/IBooking";
 export const BookTable = () => {
 
-
-   //States. Kan förmodligen effektiviseras en hel del.
   const [userInput, setUserInput] = useState<IBooking>(defaultBooking)
   const [errMsg, setErrMsg] = useState("");
-  const [testBool, setTestBool] = useState(false); //ska ha nytt namn
+  const [testBool, setTestBool] = useState(false);
   const [dateState, setDateState] = useState(new Date());
   const [isDone, setIsDone] = useState(false);
   const [testId, setTestId] = useState<IBooking>(defaultBooking);
   const [bookings, setBookings] = useState<IBooking[]>([]);
   
-
-  //useEffect. duh.
   useEffect(() => {
     const loadData = async()=> {
-        const data: IBooking[] = await getAllBookings();  //Spara bokningar i en array
+        const data: IBooking[] = await getAllBookings();
         setBookings(data)
     }
     const testfunc = async () => {   
-      if (bookings) { //OM variabel inte är null/undefined
-        const test = checkDate(bookings, userInput.date, userInput.time);   //Kontrollera array mot användarens valda datum och tid. Ger tillbaka en lista
-        const tablesLeft = checkTablesLeft(test); //Kontrollera om det finns bord kvar på den filtrerade listan
+      if (bookings) {
+        const test = checkDate(bookings, userInput.date, userInput.time);
+        const tablesLeft = checkTablesLeft(test);
 
-        if (tablesLeft === 0) {       //OM inte, åtyterställ userinput och ge felmeddelande
+        if (tablesLeft === 0) {
           setTestBool(false);
           setUserInput(defaultBooking);
           setErrMsg("Det finns inga bord att boka den dagen!");
         }
 
-        if (userInput.numberOfGuests > 6 && tablesLeft < 2) {     //OM det bara finns ett bord kvar och användaren är fler än 6, ge felmeddelande
+        if (userInput.numberOfGuests > 6 && tablesLeft < 2) {
           setErrMsg("Vi har tyvärr bara ett bord ledigt, till max 6 gäster!");
           setUserInput(defaultBooking);
-        } else {      //ANNARS, set boolean till true för atta os oss vidare till nästa input.
+        } else {
           setTestBool(true);
         }
       }
@@ -49,24 +45,21 @@ export const BookTable = () => {
     if (bookings.length < 1) {
       loadData();
     }
-
-    if (userInput.date) {   //Funktionen körs när användaren valt ett datum.
+    if (userInput.date) {
       testfunc();
     }
   }, [userInput]);
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    setUserInput({ ...userInput, date: dateState.toLocaleDateString() });   //sätt datum på bookningen
+    setUserInput({ ...userInput, date: dateState.toLocaleDateString() });
     if (testBool) {
-      setTestId(await createNewBooking(userInput))      //OM alla fälten är ifyllda, posta bokningen
-      setIsDone(true)     //isDone kör confirmation-componenten.
+      setTestId(await createNewBooking(userInput))
+      setIsDone(true)
     }
   }
-
-  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {      //Handle change för alla inputs
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => { 
     const { name, type, value } = e.target;
-
     if (type === "text") {
       setUserInput({ ...userInput, customer: { ...userInput.customer, [name]: value } });
     } else if (type === "radio") {
@@ -75,7 +68,6 @@ export const BookTable = () => {
       setUserInput({ ...userInput, numberOfGuests: parseInt(value) });
     }
   };
-  //HTML beroende på vad vi submittat.
   return <>
     {!testBool && (<div className="bookingBox">
       <form onSubmit={handleSubmit}>
@@ -86,13 +78,11 @@ export const BookTable = () => {
       </form>
       <h2>{errMsg}</h2>
     </div>)}
-
     {testBool && !isDone && (
       <form onSubmit={handleSubmit}>
         <BookingInput userInput={userInput} handleChange={handleChange}></BookingInput>
       </form>
     )}
     {isDone && testBool && <Confirmation name={testId.customer.name} msg={`Ditt bord är nu bokat med bokningsnummer: ${testId._id}`}></Confirmation>}
-
   </>
 }

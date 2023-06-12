@@ -1,8 +1,8 @@
 import { ChangeEvent } from "react";
-import { Booking } from "../../models/booking";
+import { IBooking } from "../../models/IBooking";
 
 interface IBookingSelectProps {
-  userInput: Booking;
+  userInput: IBooking;
   handleChange(e: ChangeEvent<HTMLSelectElement>): void;
 }
 

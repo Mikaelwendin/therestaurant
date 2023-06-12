@@ -1,12 +1,18 @@
-import { ChangeEvent } from "react";
-import { Booking } from "../../models/booking";
+import { ChangeEvent, useState } from "react";
+import { IBooking } from "../../models/IBooking";
+import { Gdpr } from "../Gdpr/Gdpr";
 
 interface IBookingInputProps {
-  userInput: Booking;
+  userInput: IBooking;
   handleChange(e: ChangeEvent<HTMLInputElement>): void;
 }
 
 export const BookingInput = ({ userInput, handleChange }: IBookingInputProps) => {
+  const [approved, setApproved] = useState(false);
+  const switchFunc = () => {
+    setApproved(!approved);
+    console.log(approved);
+  }
   return (
     <>
       <input
@@ -30,7 +36,8 @@ export const BookingInput = ({ userInput, handleChange }: IBookingInputProps) =>
         name="email"
         placeholder="Email"
       />
-      <button>Spara</button>
+      <div><Gdpr switchFunc={switchFunc}></Gdpr></div>
+      <button disabled={!approved}>Spara</button>
     </>
   );
 };
