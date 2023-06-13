@@ -1,10 +1,11 @@
+import { ICurrentBookingContext } from "../contexts/CurrentBookingContext";
 import { IBooking } from "../models/IBooking";
 import { IAction } from "./BookingsReducer";
 
 export const CurrentBookingReducer = (
-  booking: IBooking,
+  currentBooking: ICurrentBookingContext,
   action: IAction
-): IBooking => {
+): ICurrentBookingContext => {
   switch (action.type) {
     case "gotbooking": {
       console.log(
@@ -16,5 +17,5 @@ export const CurrentBookingReducer = (
     //default: (felhantering)
   }
 
-  return booking;
+  return currentBooking;
 };

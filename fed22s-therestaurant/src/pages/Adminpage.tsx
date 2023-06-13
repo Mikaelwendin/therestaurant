@@ -6,7 +6,10 @@ import { BookingDispatchContext } from "../contexts/BookingDispatchContext";
 import { getAllBookings } from "../services/BookingService";
 import { defaultBooking } from "../models/IBooking";
 import { CurrentBookingReducer } from "../reducers/CurrentBookingReducer";
-import { CurrentBookingContext } from "../contexts/CurrentBookingContext";
+import {
+  CurrentBookingContext,
+  defaultCurrentBoookingContext,
+} from "../contexts/CurrentBookingContext";
 import { CurrentBookingDispatchContext } from "../contexts/CurrentBookingDispatchContext";
 import { ChangeBooking } from "../components/ChangeBooking/ChangeBooking";
 
@@ -14,7 +17,7 @@ export const Adminpage = () => {
   const [bookings, dispatchBookings] = useReducer(BookingsReducer, []);
   const [currentBooking, dispatchCurrentBooking] = useReducer(
     CurrentBookingReducer,
-    defaultBooking
+    defaultCurrentBoookingContext
   );
 
   useEffect(() => {
@@ -41,8 +44,8 @@ export const Adminpage = () => {
           <CurrentBookingDispatchContext.Provider
             value={dispatchCurrentBooking}
           >
-            <ChangeBooking></ChangeBooking>
-            <BookingList></BookingList>
+            {!currentBooking.toggle && <ChangeBooking></ChangeBooking>}
+            {currentBooking.toggle && <BookingList></BookingList>}
           </CurrentBookingDispatchContext.Provider>
         </CurrentBookingContext.Provider>
       </BookingDispatchContext.Provider>
