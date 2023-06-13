@@ -25,6 +25,7 @@ export const BookingList = () => {
             <StyledTh>Namn</StyledTh>
             <StyledTh>E-post</StyledTh>
             <StyledTh>Telefon</StyledTh>
+            <StyledTh>Bokningsnummer</StyledTh>
           </StyledTr>
         </thead>
         <tbody>{html}</tbody>
