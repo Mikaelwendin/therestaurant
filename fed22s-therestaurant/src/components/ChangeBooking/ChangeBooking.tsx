@@ -1,10 +1,17 @@
 import { ChangeEvent, FormEvent, useState, useContext, useEffect } from "react";
 import { IBooking, defaultBooking } from "../../models/IBooking";
 import { CurrentBookingContext } from "../../contexts/CurrentBookingContext";
-import { updateBookingById } from "../../services/BookingService";
+import {
+  getAllBookings,
+  updateBookingById,
+} from "../../services/BookingService";
+import { CurrentBookingDispatchContext } from "../../contexts/CurrentBookingDispatchContext";
+import { BookingDispatchContext } from "../../contexts/BookingDispatchContext";
 
 export const ChangeBooking = () => {
   const currentBooking = useContext(CurrentBookingContext);
+  const dispatchCurrentBooking = useContext(CurrentBookingDispatchContext);
+  const dispatchBookings = useContext(BookingDispatchContext);
 
   const [userInput, setUserInput] = useState<IBooking>(currentBooking.booking);
 
@@ -27,10 +34,25 @@ export const ChangeBooking = () => {
     }
   };
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    if (userInput._id) updateBookingById(userInput._id, userInput);
+    console.log("handleSubmit has been run");
+
+    if (userInput._id) await updateBookingById(userInput._id, userInput);
+
+    dispatchCurrentBooking({
+      type: "toggled",
+      payload: JSON.stringify(currentBooking),
+    });
+    const bookingsFromApi = await getAllBookings();
+
+    dispatchBookings({
+      type: "gotbookings",
+      payload: JSON.stringify(bookingsFromApi),
+    });
+    console.log("Test");
   };
+
   return (
     <>
       Ändra bokningen för bokningsnummer: {userInput._id}.

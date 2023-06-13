@@ -14,7 +14,15 @@ export const CurrentBookingReducer = (
 
       return JSON.parse(action.payload);
     }
-    //default: (felhantering)
+
+    case "toggled": {
+      console.log("toggled has been run");
+
+      return { ...currentBooking, toggle: !currentBooking.toggle };
+    }
+
+    default:
+      break;
   }
 
   return currentBooking;
