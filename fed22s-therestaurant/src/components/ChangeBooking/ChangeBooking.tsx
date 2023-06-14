@@ -7,6 +7,8 @@ import {
 } from "../../services/BookingService";
 import { CurrentBookingDispatchContext } from "../../contexts/CurrentBookingDispatchContext";
 import { BookingDispatchContext } from "../../contexts/BookingDispatchContext";
+import { BookingRadio } from "../BookingRadio/BookingRadio";
+import { BookingSelect } from "../BookingSelect/BookingSelect";
 
 export const ChangeBooking = () => {
   const currentBooking = useContext(CurrentBookingContext);
@@ -26,11 +28,17 @@ export const ChangeBooking = () => {
   ) => {
     const eName = e.target.name;
 
-    if (e.target.type === "text") {
+    if (e.target.type === "text" && e.target.name === "date") {
+      setUserInput({ ...userInput, date: e.target.value });
+    } else if (e.target.type === "text") {
       setUserInput({
         ...userInput,
         customer: { ...userInput.customer, [eName]: e.target.value },
       });
+    } else if (e.target.type === "radio") {
+      setUserInput({ ...userInput, time: e.target.value });
+    } else if (e.target.type === "select-one") {
+      setUserInput({ ...userInput, numberOfGuests: parseInt(e.target.value) });
     }
   };
 
@@ -50,7 +58,6 @@ export const ChangeBooking = () => {
       type: "gotbookings",
       payload: JSON.stringify(bookingsFromApi),
     });
-    console.log("Test");
   };
 
   return (
@@ -63,18 +70,8 @@ export const ChangeBooking = () => {
           onChange={handleChange}
           name="date"
         />
-        <input
-          type="text"
-          value={userInput.time}
-          onChange={handleChange}
-          name="time"
-        />
-        <input
-          type="text"
-          value={userInput.numberOfGuests}
-          onChange={handleChange}
-          name="numberOfGuests"
-        />
+        <BookingRadio handleChange={handleChange} />
+        <BookingSelect userInput={userInput} handleChange={handleChange} />
         <input
           type="text"
           value={userInput.customer.name}
