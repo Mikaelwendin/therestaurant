@@ -1,14 +1,12 @@
 import React from 'react';
 import CarouselSlider from '../components/Carousel/Carousel';
-import GreenButton from '../components/GreenBtn';
-import RedButton from '../components/RedBtn';
-import NeutralButton from '../components/NeutralBtn';
-
+import { StyledDiv } from "../components/Styled/StyledDiv";
 
 
 export const Startpage = () => {
   return (
     <>
+<<<<<<< HEAD
       <p>Startpage is working</p>
 <<<<<<< HEAD
 =======
@@ -17,6 +15,14 @@ export const Startpage = () => {
       <RedButton></RedButton>
       <NeutralButton></NeutralButton>
 >>>>>>> 7a5e86f ((feat): carousel)
+=======
+
+      <StyledDiv>
+        <p>Startpage is working</p>
+
+        <CarouselSlider />
+      </StyledDiv>
+>>>>>>> 8975625 ((feat): contact fields)
     </>
   );
 };
