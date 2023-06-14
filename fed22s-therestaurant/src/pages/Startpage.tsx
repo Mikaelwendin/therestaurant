@@ -9,9 +9,6 @@ export const Startpage = () => {
   return (
     <>
       <p>Startpage is working</p>
-      <GreenButton></GreenButton>
-      <RedButton></RedButton>
-      <NeutralButton></NeutralButton>
     </>
   );
 };
