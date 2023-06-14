@@ -4,6 +4,7 @@ import { StyledTable } from "../Styled/StyledTable";
 import { StyledTr } from "../Styled/StyledTr";
 import { StyledTh } from "../Styled/StyledTh";
 import { BookingsContext } from "../../contexts/BookingsContext";
+import "./BookingList.scss";
 
 export const BookingList = () => {
   const bookings = useContext(BookingsContext);
@@ -15,7 +16,7 @@ export const BookingList = () => {
   //Keys på styledTh i nedan html med?
 
   return (
-    <>
+    <div className="wrapper-table">
       <StyledTable>
         <thead>
           <StyledTr>
@@ -30,6 +31,6 @@ export const BookingList = () => {
         </thead>
         <tbody>{html}</tbody>
       </StyledTable>
-    </>
+    </div>
   );
 };
