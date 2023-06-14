@@ -1,0 +1,42 @@
+body {
+    background-image: url("../assets/photos/throughwindow.jpg");
+    background-repeat: no-repeat;
+    background-size:cover;
+    height: 100vh;
+
+}
+.bookingPageBox {
+    display: flex;
+    justify-content: center;
+    height: 80vh;
+    align-items: center;
+}
+button {
+font-family: Harrington;
+width: 30vw;
+height: 5vh;
+font-size: larger;
+font-weight: 700;
+background-color: hsla(354, 93%, 22%, 0.4);
+border-radius: 15px;
+color: white;
+animation: fadeIn 1s;
+&:hover {
+        color: #370617 !important;
+        text-shadow: 0 0 1px #fff, 0 0 2px #fff, 0 0 4px #fff, 0 0 6px #370617,
+            0 0 8px #370617, 0 0 10px #370617, 0 0 12px #54b3d6, 0 0 15px #370617;
+        transition: all 0.5s ease-in-out;
+        background-color: hsla(358, 97%, 31%, 0.3);
+        cursor: pointer;
+        
+}
+}
+@media (min-width:800px) {
+button {
+    width: 15vw;
+}
+}
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }

@@ -7,6 +7,7 @@ import { BookingRadio } from "../BookingRadio/BookingRadio";
 import { BookingInput } from "../BookingInput/BookingInput";
 import { createNewBooking, getAllBookings } from "../../services/BookingService";
 import { IBooking, defaultBooking } from "../../models/IBooking";
+import "./bookTable.scss"
 export const BookTable = () => {
 
   const [userInput, setUserInput] = useState<IBooking>(defaultBooking)

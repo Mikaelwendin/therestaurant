@@ -38,6 +38,8 @@ body {
 
 .nav ul {
     padding: 0 22px;
+    font-family: Harrington;
+    font-weight: 600;
 }
 
 .nav li {
@@ -130,5 +132,7 @@ body {
     #menu {
         width: 100%;
         position: relative;
+        background: linear-gradient(hsla(339, 80%, 12%, 0.9), hsla(339, 80%, 12%, 0.6), hsla(339, 80%, 12%, 0.2),hsla(339, 80%, 12%, 0.1),hsla(339, 80%, 12%, 0.0));
+        height: 15vh;
     }
 }
