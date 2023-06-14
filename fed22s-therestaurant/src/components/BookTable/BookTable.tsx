@@ -22,10 +22,10 @@ export const BookTable = () => {
         const data: IBooking[] = await getAllBookings();
         setBookings(data)
     }
-    const testfunc = async () => {   
+    const controlInput = async () => {   
       if (bookings) {
-        const test = checkDate(bookings, userInput.date, userInput.time);
-        const tablesLeft = checkTablesLeft(test);
+        const results = checkDate(bookings, userInput.date, userInput.time);
+        const tablesLeft = checkTablesLeft(results);
 
         if (tablesLeft === 0) {
           setIsFree(false);
@@ -46,7 +46,7 @@ export const BookTable = () => {
       loadData();
     }
     if (userInput.date) {
-      testfunc();
+      controlInput();
     }
   }, [userInput]);
 
