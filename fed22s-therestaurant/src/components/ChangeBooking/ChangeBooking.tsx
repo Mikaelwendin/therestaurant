@@ -9,6 +9,7 @@ import { CurrentBookingDispatchContext } from "../../contexts/CurrentBookingDisp
 import { BookingDispatchContext } from "../../contexts/BookingDispatchContext";
 import { BookingRadio } from "../BookingRadio/BookingRadio";
 import { BookingSelect } from "../BookingSelect/BookingSelect";
+import "./ChangeBooking.scss";
 
 export const ChangeBooking = () => {
   const currentBooking = useContext(CurrentBookingContext);
@@ -61,37 +62,52 @@ export const ChangeBooking = () => {
   };
 
   return (
-    <>
-      Ändra bokningen för bokningsnummer: {userInput._id}.
-      <form onSubmit={handleSubmit}>
+    <div className="wrapper">
+      <h2>Ändra bokningen för bokningsnummer:</h2>
+      <h3>{userInput._id}</h3>
+      <form className="form" onSubmit={handleSubmit}>
+        <label htmlFor="date">Bokning:</label>
         <input
+          className="form__input"
           type="text"
           value={userInput.date}
           onChange={handleChange}
           name="date"
+          id="date"
         />
         <BookingRadio handleChange={handleChange} />
         <BookingSelect userInput={userInput} handleChange={handleChange} />
+        <label htmlFor="name">Namn:</label>
         <input
+          className="form__input"
           type="text"
           value={userInput.customer.name}
           onChange={handleChange}
           name="name"
+          id="name"
         />
+        <label htmlFor="email">E-post:</label>
         <input
+          className="form__input"
           type="text"
           value={userInput.customer.email}
           onChange={handleChange}
           name="email"
+          id="email"
         />
+        <label htmlFor="phone">Telefon:</label>
         <input
+          className="form__input"
           type="text"
           value={userInput.customer.phone}
           onChange={handleChange}
           name="phone"
+          id="phone"
         />
-        <button type="submit">Spara</button>
+        <button className="form__button" type="submit">
+          Spara
+        </button>
       </form>
-    </>
+    </div>
   );
 };

@@ -13,6 +13,8 @@ import {
 import { CurrentBookingDispatchContext } from "../contexts/CurrentBookingDispatchContext";
 import { ChangeBooking } from "../components/ChangeBooking/ChangeBooking";
 
+import "./AdminPage.scss";
+
 export const Adminpage = () => {
   const [bookings, dispatchBookings] = useReducer(BookingsReducer, []);
   const [currentBooking, dispatchCurrentBooking] = useReducer(
