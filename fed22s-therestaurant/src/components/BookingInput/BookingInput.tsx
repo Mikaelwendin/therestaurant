@@ -11,7 +11,6 @@ export const BookingInput = ({ userInput, handleChange }: IBookingInputProps) =>
   const [approved, setApproved] = useState(false);
   const switchFunc = () => {
     setApproved(!approved);
-    console.log(approved);
   }
   return (
     <>
