@@ -93,6 +93,9 @@ background-color: hsla(354, 93%, 22%, 0.4);
 border-radius: 15px;
 color: white;
 animation: fadeIn 1s;
+&:focus {
+    background-color: #370617;
+}
 &:hover {
         color: #370617 !important;
         text-shadow: 0 0 1px #fff, 0 0 2px #fff, 0 0 4px #fff, 0 0 6px #370617,
