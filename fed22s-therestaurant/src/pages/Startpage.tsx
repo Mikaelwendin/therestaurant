@@ -19,7 +19,6 @@ export const Startpage = () => {
 
       <StyledDiv>
         <p>Startpage is working</p>
-
         <CarouselSlider />
       </StyledDiv>
 >>>>>>> 8975625 ((feat): contact fields)
