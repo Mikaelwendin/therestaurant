@@ -1,5 +1,5 @@
 //2023-06-16 - 18:00: 88 persons booked
-//2023-06-16 - 21:00: 51 persons booked
+//2023-06-16 - 21:00: 84 persons booked
 //2023-06-17 - 18:00: 19 persons booked
 //2023-06-17 - 21:00: 31 persons booked
 
@@ -122,6 +122,36 @@ exports.mockBookingData = [
       name: "name14",
       email: "mail14",
       phone: "phone14",
+    },
+  },
+  {
+    date: "2023-06-16",
+    time: "21:00",
+    numberOfGuests: 12,
+    customer: {
+      name: "name32",
+      email: "mail32",
+      phone: "phone32",
+    },
+  },
+  {
+    date: "2023-06-16",
+    time: "21:00",
+    numberOfGuests: 12,
+    customer: {
+      name: "name33",
+      email: "mail33",
+      phone: "phone33",
+    },
+  },
+  {
+    date: "2023-06-16",
+    time: "21:00",
+    numberOfGuests: 9,
+    customer: {
+      name: "name34",
+      email: "mail34",
+      phone: "phone34",
     },
   },
   {
