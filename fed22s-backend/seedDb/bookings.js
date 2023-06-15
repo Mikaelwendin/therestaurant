@@ -1,7 +1,7 @@
-//2023-06-16 - 18:00: 88 persons booked
-//2023-06-16 - 21:00: 84 persons booked
-//2023-06-17 - 18:00: 19 persons booked
-//2023-06-17 - 21:00: 31 persons booked
+//2023-06-16 - 18:00: 88 persons booked - 15 tables
+//2023-06-16 - 21:00: 72 persons booked - 15 tables
+//2023-06-17 - 18:00: 19 persons booked - 4 tables
+//2023-06-17 - 21:00: 31 persons booked - 6 tables
 
 exports.mockBookingData = [
   {
@@ -86,16 +86,6 @@ exports.mockBookingData = [
   },
   {
     date: "2023-06-16",
-    time: "18:00",
-    numberOfGuests: 6,
-    customer: {
-      name: "name8",
-      email: "mail8",
-      phone: "phone8",
-    },
-  },
-  {
-    date: "2023-06-16",
     time: "21:00",
     numberOfGuests: 5,
     customer: {
@@ -164,16 +154,7 @@ exports.mockBookingData = [
       phone: "phone15",
     },
   },
-  {
-    date: "2023-06-16",
-    time: "21:00",
-    numberOfGuests: 12,
-    customer: {
-      name: "name16",
-      email: "mail16",
-      phone: "phone16",
-    },
-  },
+
   {
     date: "2023-06-16",
     time: "21:00",
@@ -227,7 +208,7 @@ exports.mockBookingData = [
   {
     date: "2023-06-17",
     time: "21:00",
-    numberOfGuests: 3,
+    numberOfGuests: 3, //1
     customer: {
       name: "name19",
       email: "mail19",
