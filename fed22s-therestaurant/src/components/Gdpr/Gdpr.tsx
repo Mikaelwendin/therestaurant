@@ -1,4 +1,5 @@
 import { ChangeEvent } from "react";
+import "./grpr.scss"
 
 interface IGrdpProps {
     switchFunc(e: ChangeEvent<HTMLInputElement>): void;

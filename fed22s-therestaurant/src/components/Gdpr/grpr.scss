@@ -1,0 +1,16 @@
+.gdprBox {
+    padding: 5%;
+    margin-top: 8%;
+    background-color: hsla(0, 0%, 0%, 0.5);
+    & label {
+        font-size: 1.5rem;
+        font-weight: 500;
+        border-bottom: 2px solid #fff;
+    }
+    & input[type=checkbox] {
+        margin: 10px 10px 10px;
+        line-height: normal;
+        width: 20px;
+        height: 20px;
+        }
+}

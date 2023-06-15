@@ -1,0 +1,23 @@
+.confirmationBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20%;
+    background-color: hsla(0, 0%, 0%, 0.5);
+    & h2 {
+        font-size: 1.2rem;
+    }
+    & span {
+        font-weight: 500;
+    }
+    & p {
+        margin-top: 10%;
+        font-size: 1.1rem;
+        & a {
+            font-size: 1.3rem;
+            &:visited {
+                color: inherit;
+            }
+        }
+    }
+}

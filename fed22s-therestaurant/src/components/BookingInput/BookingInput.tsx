@@ -1,6 +1,7 @@
 import { ChangeEvent, useState } from "react";
 import { IBooking } from "../../models/IBooking";
 import { Gdpr } from "../Gdpr/Gdpr";
+import "./bookingInput.scss"
 
 interface IBookingInputProps {
   userInput: IBooking;

@@ -14,10 +14,10 @@ export const Bookingpage = () => {
     return <>
     <div className="bookingPageBox">
         {!isBooking && !isCancel && (
-            <button onClick={() => setIsShown(true)}>Boka bord</button>)}
+            <button className="bookBtn" onClick={() => setIsShown(true)}>Boka bord</button>)}
         {isBooking && (<BookTable></BookTable>)}
         {!isCancel && !isBooking && (
-            <button onClick={() => setIsCancel(true)}>Avboka bord</button>)}
+            <button className="bookBtn" onClick={() => setIsCancel(true)}>Avboka bord</button>)}
         {isCancel && (<CancelTable></CancelTable>)}
         </div>
     </>;
