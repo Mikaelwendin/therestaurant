@@ -21,6 +21,7 @@ export const BookingInput = ({ userInput, handleChange }: IBookingInputProps) =>
         onChange={handleChange}
         name="name"
         placeholder="name"
+        required
       />
       <input
         type="text"
@@ -28,6 +29,7 @@ export const BookingInput = ({ userInput, handleChange }: IBookingInputProps) =>
         onChange={handleChange}
         name="phone"
         placeholder="Phone"
+        required
       />
       <input
         type="text"
@@ -35,6 +37,7 @@ export const BookingInput = ({ userInput, handleChange }: IBookingInputProps) =>
         onChange={handleChange}
         name="email"
         placeholder="Email"
+        required
       />
       <div><Gdpr switchFunc={switchFunc}></Gdpr></div>
       <button disabled={!approved}>Spara</button>
