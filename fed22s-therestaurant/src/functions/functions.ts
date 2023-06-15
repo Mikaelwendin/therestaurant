@@ -13,14 +13,12 @@ export const checkDate = (list:IBooking[], date:string, time:string) => {
  //Checktables tar emot en lista som kontrollerar om det finns bord kvar. Ger tillbaka antal lediga bord.
 
  export const checkTablesLeft = (list: IBooking[]) => {     
-   const tableCapacity = 6;
    let numberOfTables = 15;
    
    for (let i = 0; i < list.length; i++) {
-     const guestsInBooking = list[i].numberOfGuests;
-     const tablesNeeded = Math.ceil(guestsInBooking / tableCapacity);
      
-     numberOfTables -= tablesNeeded;
+     if (list[i].numberOfGuests < 7) numberOfTables -= 1;
+     else numberOfTables -=2;
    }
    
    return numberOfTables >= 0 ? numberOfTables : 0;
