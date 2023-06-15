@@ -1,12 +1,13 @@
 .container {
   display: flex;
   justify-content: center;
-  align-items: flex-start;
-  background-image: url("../assets/photos/outsidebysea.jpeg");
+  align-items: center;
+  background-image: url("../assets/photos/outsidebysea.jpeg"); //lagt till från här till...
   background-repeat: no-repeat;
   background-size:cover;
   height: 100vh;
   animation: fadeIn 1s;
+  flex-direction: column; //Hit!
 }
 
 .styled-form {
