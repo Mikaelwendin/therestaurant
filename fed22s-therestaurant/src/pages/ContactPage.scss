@@ -2,7 +2,11 @@
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  min-height: 100vh;
+  background-image: url("../assets/photos/outsidebysea.jpeg");
+  background-repeat: no-repeat;
+  background-size:cover;
+  height: 100vh;
+  animation: fadeIn 1s;
 }
 
 .styled-form {
@@ -40,4 +44,12 @@
 .form-image-container img {
   width: 300px;
   margin-top: 10px;
+}
+@keyframes fade-in {
+  0% {
+    opacity: 0; 
+  }
+  100% {
+    opacity: 1; 
+  }
 }

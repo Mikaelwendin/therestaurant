@@ -2,7 +2,7 @@
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: auto 1fr auto;
-  min-height: 100vh;
+  animation: fadeIn 1s;
 }
 
 .fyraboxar {
