@@ -2,23 +2,9 @@ const Booking = require("../models/Booking");
 const { NotFoundError } = require("../utils/errors");
 
 exports.getAllBookings = async (req, res) => {
-  //limit?
-  //offset?
-
   const bookings = await Booking.find();
 
-  const totalBookingsInDb = await Booking.countDocuments();
-/*
-return res.json({
-  data: bookings,
-  meta: {
-    total: totalBookingsInDb,
-    count: bookings.length,
-  },
-});
-*/
-return res.json(bookings)
-
+  return res.json(bookings);
 };
 
 exports.getBookingById = async (req, res) => {
@@ -33,7 +19,6 @@ exports.getBookingById = async (req, res) => {
 };
 
 exports.createNewBooking = async (req, res) => {
-  // use custom error in this fn:?
   try {
     const newBooking = await Booking.create(req.body);
 
@@ -66,15 +51,19 @@ exports.updateBookingById = async (req, res) => {
 
   const booking = await Booking.findOneAndUpdate(filter, update, { new: true });
 
+  if (!booking)
+    throw new NotFoundError("A booking with that ID does not exist");
+
   return res.json(booking);
 };
 
 exports.deleteBookingById = async (req, res) => {
   const bookingId = req.params.bookingId;
 
-  //if (!bookingToDelete) error finns ej
-
   await Booking.findByIdAndDelete(bookingId);
+
+  if (!bookingId)
+    throw new NotFoundError("A booking with that ID does not exist");
 
   return res.sendStatus(204);
 };

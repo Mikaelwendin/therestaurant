@@ -5,3 +5,8 @@ export const StyledTd = styled.td`
   text-align: left;
   padding: 8px;
 `;
+
+export const StyledTdCenter = styled(StyledTd)`
+  text-align: center;
+  border: none;
+`;
