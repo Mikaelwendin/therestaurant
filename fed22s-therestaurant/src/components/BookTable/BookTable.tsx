@@ -27,16 +27,21 @@ export const BookTable = () => {
       if (bookings) {
         const results = checkDate(bookings, userInput.date, userInput.time);
         const tablesLeft = checkTablesLeft(results);
+        console.log(tablesLeft)
+        console.log(userInput.numberOfGuests)
 
         if (tablesLeft === 0) {
           setIsFree(false);
           setUserInput(defaultBooking);
           setErrMsg("Det finns inga bord att boka den dagen!");
+          return;
         }
 
-        if (userInput.numberOfGuests > 6 && tablesLeft < 2) {
+        if (userInput.numberOfGuests > 6 && tablesLeft === 1) {
+          setIsFree(false)
           setErrMsg("Vi har tyvärr bara ett bord ledigt, till max 6 gäster!");
           setUserInput(defaultBooking);
+          return;
         } else {
           setIsFree(true);
         }
@@ -77,8 +82,8 @@ export const BookTable = () => {
         <BookingSelect userInput={userInput} handleChange={handleChange} />
         <BookingRadio handleChange={handleChange} />
         <button className="goBtn" disabled={!userInput.time || !userInput.date && userInput.numberOfGuests < 1}>Go</button>
+        <h2>{errMsg}</h2>
       </form>
-      <h2>{errMsg}</h2>
     </div>)}
     {isFree && !isDone && (
       <form onSubmit={handleSubmit}>
