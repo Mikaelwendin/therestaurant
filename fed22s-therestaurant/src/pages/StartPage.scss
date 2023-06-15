@@ -1,28 +1,38 @@
+.container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+}
 
-  .carousel-container {
-    margin-top: 150px;
-  }
+.fyraboxar {
+  grid-row: 3;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  justify-items: center;
+}
 
-  .rubrik {
-    font-family: arial;
-    font-size: 32px;
-    font-weight: bold;
-    color: #FFBA08;
-    text-transform: uppercase;
-    text-align: center;
-    border: none;
-  }
+.rubrik {
+  font-family: Herrington;
+  font-size: 40px;
+  font-weight: bold;
+  color: #FFBA08;
+  text-transform: uppercase;
+  text-align: center;
+  border: none;
+}
 
-  .fade-in-heading {
-    opacity: 0;
-    animation: fade-in 2s ease-in forwards;
-  }
+.fade-in-heading {
+  opacity: 0;
+  animation: fade-in 2s ease-in forwards;
+}
   
-  @keyframes fade-in {
-    0% {
-      opacity: 0; 
-    }
-    100% {
-      opacity: 1; 
-    }
+@keyframes fade-in {
+  0% {
+    opacity: 0; 
   }
+  100% {
+    opacity: 1; 
+  }
+}

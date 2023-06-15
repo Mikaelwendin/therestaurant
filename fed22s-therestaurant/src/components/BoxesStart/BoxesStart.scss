@@ -1,26 +1,16 @@
-.four-boxes {
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .box {
-    flex-basis: 23%;
-    padding: 20px;
-    background-color: #f1f1f1;
-    border-radius: 5px;
-    text-align: center;
-  }
 
-  .four-boxes {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-  }
-  
+.four-boxes {
+  display: flex;
+  justify-content: space-between;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 200px;
+}
 
 .box {
-    padding: 20px;
-    background-color: #f1f1f1;
-    border-radius: 5px;
-    text-align: center;
-    }
+  flex-basis: 23%;
+  padding: 20px;
+  background-color: #f1f1f1;
+  border-radius: 5px;
+  text-align: center;
+  position: relative;
+  }

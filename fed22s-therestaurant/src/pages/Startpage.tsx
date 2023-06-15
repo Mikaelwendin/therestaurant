@@ -7,7 +7,7 @@ import BoxesStart from '../components/BoxesStart/BoxesStart';
 
 
 export const Startpage = () => {
-  const boxTexts = ["Ruta 1", "Ruta 2", "Ruta 3", "Ruta 4"];
+  const boxTexts = ["ett", "tva", "tre", "fyra"];
   return (
     <>
       <StyledDiv>
@@ -22,8 +22,10 @@ export const Startpage = () => {
         <div className="carousel-container">
           <CarouselSlider />
         </div>
-        <BoxesStart />
       </StyledDiv>
+      <div className="fyraboxar">
+        <BoxesStart />
+      </div>
     </>
   );
 };
