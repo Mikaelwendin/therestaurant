@@ -7,6 +7,7 @@ import { BookingsContext } from "../../contexts/BookingsContext";
 import "./BookingList.scss";
 import { BookingDispatchContext } from "../../contexts/BookingDispatchContext";
 import { getAllBookings } from "../../services/BookingService";
+import { NeutralButton } from "../Styled/AdminButtons";
 
 export const BookingList = () => {
   const bookings = useContext(BookingsContext);
@@ -34,20 +35,24 @@ export const BookingList = () => {
   };
 
   const html = bookings.map((booking) => (
-    <BookingView key={booking.id} booking={booking}></BookingView>
+    <StyledTr key={booking._id}>
+      <BookingView booking={booking}></BookingView>
+    </StyledTr>
   ));
 
   return (
     <div className="wrapper-table">
-      <label htmlFor="search">Sök datum: </label>
-      <input
-        type="text"
-        value={userInput}
-        onChange={handleChange}
-        name="search"
-        id="search"
-      />
-      <button onClick={handleClick}>Sök</button>
+      <div className="wrapper-search">
+        <label htmlFor="search">Sök datum: </label>
+        <input
+          type="text"
+          value={userInput}
+          onChange={handleChange}
+          name="search"
+          id="search"
+        />
+        <NeutralButton onClick={handleClick}>Sök</NeutralButton>
+      </div>
 
       <StyledTable>
         <thead>
@@ -59,6 +64,8 @@ export const BookingList = () => {
             <StyledTh>E-post</StyledTh>
             <StyledTh>Telefon</StyledTh>
             <StyledTh>Bokningsnummer</StyledTh>
+            <StyledTh></StyledTh>
+            <StyledTh></StyledTh>
           </StyledTr>
         </thead>
         <tbody>{html}</tbody>

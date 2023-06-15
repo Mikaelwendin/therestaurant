@@ -5,14 +5,11 @@ import {
   getAllBookings,
   getBookingById,
 } from "../../services/BookingService";
-import { StyledTd } from "../Styled/StyledTd";
-import { StyledTr } from "../Styled/StyledTr";
+import { StyledTd, StyledTdCenter } from "../Styled/StyledTd";
 import { BookingDispatchContext } from "../../contexts/BookingDispatchContext";
 import { CurrentBookingDispatchContext } from "../../contexts/CurrentBookingDispatchContext";
-import {
-  CurrentBookingContext,
-  ICurrentBookingContext,
-} from "../../contexts/CurrentBookingContext";
+import { ICurrentBookingContext } from "../../contexts/CurrentBookingContext";
+import { DangerButton, NeutralButton } from "../Styled/AdminButtons";
 
 interface IBookingViewProps {
   booking: IBooking;
@@ -54,7 +51,7 @@ export const BookingView = ({ booking }: IBookingViewProps) => {
   };
 
   return (
-    <StyledTr>
+    <>
       <StyledTd>{booking.date}</StyledTd>
       <StyledTd>{booking.time}</StyledTd>
       <StyledTd>{booking.numberOfGuests}</StyledTd>
@@ -62,12 +59,12 @@ export const BookingView = ({ booking }: IBookingViewProps) => {
       <StyledTd>{booking.customer.email}</StyledTd>
       <StyledTd>{booking.customer.phone}</StyledTd>
       <StyledTd>{booking._id}</StyledTd>
-      <StyledTd>
-        <button onClick={handleClickChange}>Ändra</button>
-      </StyledTd>
-      <StyledTd>
-        <button onClick={handleClickCancel}>Avboka</button>
-      </StyledTd>
-    </StyledTr>
+      <StyledTdCenter>
+        <NeutralButton onClick={handleClickChange}>Ändra</NeutralButton>
+      </StyledTdCenter>
+      <StyledTdCenter>
+        <DangerButton onClick={handleClickCancel}>Avboka</DangerButton>
+      </StyledTdCenter>
+    </>
   );
 };

@@ -3,6 +3,12 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: #03071eb4;
+  padding-top: 10px;
+  @media (min-width: 800px) {
+    width: 50%;
+  }
+
   h2 {
     text-align: center;
   }
