@@ -33,4 +33,30 @@
   &__button {
     margin: 20px;
   }
+  .selectInput {
+    all: revert;
+    margin-top: 10px;
+    &:hover {
+      all: revert;
+      margin-top: 10px;
+    }
+  }
+  .radioDiv {
+    all: revert;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    .radioInput {
+      all: revert;
+      margin-top: 10px;
+      margin-left: 5px;
+      margin-right: 10px;
+    }
+    label {
+      all: revert;
+      margin-top: 10px;
+    }
+  }
 }
