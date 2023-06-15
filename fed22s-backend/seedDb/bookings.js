@@ -1,5 +1,5 @@
 //2023-06-16 - 18:00: 88 persons booked - 15 tables
-//2023-06-16 - 21:00: 72 persons booked - 15 tables
+//2023-06-16 - 21:00: 67 persons booked - 14 tables
 //2023-06-17 - 18:00: 19 persons booked - 4 tables
 //2023-06-17 - 21:00: 31 persons booked - 6 tables
 
@@ -84,16 +84,7 @@ exports.mockBookingData = [
       phone: "phone7",
     },
   },
-  {
-    date: "2023-06-16",
-    time: "21:00",
-    numberOfGuests: 5,
-    customer: {
-      name: "name12",
-      email: "mail12",
-      phone: "phone12",
-    },
-  },
+
   {
     date: "2023-06-16",
     time: "21:00",
