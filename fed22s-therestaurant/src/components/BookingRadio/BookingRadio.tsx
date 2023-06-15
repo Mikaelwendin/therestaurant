@@ -1,4 +1,5 @@
 import { ChangeEvent } from "react";
+import "./bookingRadio.scss"
 
 interface IBookingRadioProps {
   handleChange(e: ChangeEvent<HTMLInputElement>): void;

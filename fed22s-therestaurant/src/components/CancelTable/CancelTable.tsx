@@ -3,6 +3,7 @@ import { Confirmation } from "../Confirmation/Confirmation";
 import { deleteBookingById, getBookingById } from "../../services/BookingService";
 import { IBooking, defaultBooking } from "../../models/IBooking";
 import { Link } from "react-router-dom";
+import "./cancelTable.scss"
 
 export const CancelTable = () => {
 
@@ -10,6 +11,7 @@ export const CancelTable = () => {
     const [isShown, setIsShown] = useState(false);
     const [bookingCanceled, setBookingCanceled] = useState(false);
     const [booking, setBooking] = useState<IBooking>(defaultBooking);
+    const [errMsg, setErrMsg] = useState("");
 
     const deleteBooking = () => {
         deleteBookingById(bookingId)
@@ -23,15 +25,24 @@ export const CancelTable = () => {
         setBookingId(e.target.value)
     }
     const handleSubmit = async (e: FormEvent) => {
-
         e.preventDefault();
-        setBooking(await getBookingById(bookingId))
+        try {
+            setBooking(await getBookingById(bookingId))
+        } catch (error) {
+            setErrMsg("Det finns inget sådant bokningsnummer")
+            return;
+        }
+        if (!bookingId) {
+            setErrMsg("Du måste skriva in ett bokningsnummer")
+            return;
+        }
         setIsShown(true)
 
     }
     return <>{!isShown && (
         <div className="cancelTable">
-            <h1>Avboka bord</h1>
+            <h2>Avboka bord</h2>
+            <p>Skriv in ditt bokningsnummer</p>
 
             <form onSubmit={handleSubmit}>
                 <input
@@ -39,12 +50,14 @@ export const CancelTable = () => {
                     value={bookingId}
                     onChange={handleChange}
                     name="name"
+                    placeholder="Bokningsnummer"
                 />
                 <button>Sök</button>
+                <h3 className="err">{errMsg}</h3>
             </form>
         </div>
     )}
-        {isShown && !bookingCanceled && (<div>
+        {isShown && !bookingCanceled && (<div className="bookingCanceled">
             <h2>Din bokning:</h2>
             <ul>
                 <li>Namn: {booking.customer.name}</li>
@@ -54,7 +67,6 @@ export const CancelTable = () => {
                 <li>Email: {booking.customer.email}</li>
             </ul>
             <button onClick={deleteBooking}>Ta bort bokning</button>
-
             <p><Link to="/">Gå tillbaka</Link></p>
 
         </div>)}

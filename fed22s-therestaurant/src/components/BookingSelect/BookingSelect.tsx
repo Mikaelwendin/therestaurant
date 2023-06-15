@@ -1,5 +1,6 @@
 import { ChangeEvent } from "react";
 import { IBooking } from "../../models/IBooking";
+import "./bookingSelect.scss"
 
 interface IBookingSelectProps {
   userInput: IBooking;
@@ -8,6 +9,7 @@ interface IBookingSelectProps {
 
 export const BookingSelect = ({ userInput, handleChange }: IBookingSelectProps) => {
   return (
+    <div className="selectBox">
     <select className="selectInput" name="numberOfPeople" value={userInput.numberOfGuests} onChange={handleChange}>
       <option value="">Please select number of guests</option>
       {[...Array(12)].map((_, index) => (
@@ -16,5 +18,6 @@ export const BookingSelect = ({ userInput, handleChange }: IBookingSelectProps) 
         </option>
       ))}
     </select>
+    </div>
   );
 };

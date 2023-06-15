@@ -72,10 +72,11 @@ export const BookTable = () => {
   return <>
     {!isFree && (<div className="bookingBox">
       <form onSubmit={handleSubmit}>
-        <Calendar value={dateState} onClickDay={setDateState} minDate={new Date()} ></Calendar>
+        <div className="calandarBox">
+        <Calendar value={dateState} onClickDay={setDateState} minDate={new Date()} ></Calendar></div>
         <BookingSelect userInput={userInput} handleChange={handleChange} />
         <BookingRadio handleChange={handleChange} />
-        <button disabled={!userInput.time || !userInput.date && userInput.numberOfGuests < 1}>Go</button>
+        <button className="goBtn" disabled={!userInput.time || !userInput.date && userInput.numberOfGuests < 1}>Go</button>
       </form>
       <h2>{errMsg}</h2>
     </div>)}
