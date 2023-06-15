@@ -29,6 +29,7 @@ export const BookTable = () => {
         const tablesLeft = checkTablesLeft(results);
         console.log(tablesLeft)
         console.log(userInput.numberOfGuests)
+        console.log(bookings)
 
         if (tablesLeft === 0) {
           setIsFree(false);
