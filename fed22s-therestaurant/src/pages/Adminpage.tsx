@@ -45,8 +45,10 @@ export const Adminpage = () => {
           <CurrentBookingDispatchContext.Provider
             value={dispatchCurrentBooking}
           >
-            {!currentBooking.toggle && <ChangeBooking></ChangeBooking>}
-            {currentBooking.toggle && <BookingList></BookingList>}
+            <div className="wrapper-adminpage">
+              {!currentBooking.toggle && <ChangeBooking></ChangeBooking>}
+              {currentBooking.toggle && <BookingList></BookingList>}
+            </div>
           </CurrentBookingDispatchContext.Provider>
         </CurrentBookingContext.Provider>
       </BookingDispatchContext.Provider>

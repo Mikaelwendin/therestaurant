@@ -10,6 +10,7 @@ import { BookingDispatchContext } from "../../contexts/BookingDispatchContext";
 import { BookingRadio } from "../BookingRadio/BookingRadio";
 import { BookingSelect } from "../BookingSelect/BookingSelect";
 import "./ChangeBooking.scss";
+import { NeutralButton } from "../Styled/AdminButtons";
 
 export const ChangeBooking = () => {
   const currentBooking = useContext(CurrentBookingContext);
@@ -104,9 +105,9 @@ export const ChangeBooking = () => {
           name="phone"
           id="phone"
         />
-        <button className="form__button" type="submit">
+        <NeutralButton className="form__button" type="submit">
           Spara
-        </button>
+        </NeutralButton>
       </form>
     </div>
   );
