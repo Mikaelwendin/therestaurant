@@ -1,7 +1,7 @@
 .container {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   min-height: 100vh;
 }
 
@@ -12,6 +12,7 @@
   margin-right: 20px;
   background-color: #370617;
   padding: 20px;
+  border-radius: 20px;
 }
 
 .styled-form input[type="text"],
@@ -29,9 +30,6 @@
   border-radius: 4px;
 }
 
-.styled-form input[type="submit"]:hover {
-  background-color: yellow;
-}
 
 .styled-form input[type="text"],
 .styled-form textarea,
