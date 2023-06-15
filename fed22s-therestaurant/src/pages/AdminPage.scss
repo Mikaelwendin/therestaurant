@@ -1,9 +1,10 @@
 .wrapper-adminpage {
   padding-left: 5%;
   padding-right: 5%;
-  padding-top: 50px;
+  padding-top: 75px;
 
   @media (min-width: 800px) {
+    padding-top: 0px;
     display: flex;
     flex-direction: column;
     align-items: center;
