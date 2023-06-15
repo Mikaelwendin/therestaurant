@@ -1,5 +1,4 @@
 import { ICurrentBookingContext } from "../contexts/CurrentBookingContext";
-import { IBooking } from "../models/IBooking";
 import { IAction } from "./BookingsReducer";
 
 export const CurrentBookingReducer = (

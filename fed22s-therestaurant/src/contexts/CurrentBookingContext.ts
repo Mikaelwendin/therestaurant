@@ -1,8 +1,6 @@
 import { createContext } from "react";
 import { IBooking, defaultBooking } from "../models/IBooking";
 
-// innehålla en booking och en boolean?
-
 export interface ICurrentBookingContext {
   booking: IBooking;
   toggle: boolean;

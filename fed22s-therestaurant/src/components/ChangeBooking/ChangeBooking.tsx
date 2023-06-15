@@ -1,5 +1,5 @@
 import { ChangeEvent, FormEvent, useState, useContext, useEffect } from "react";
-import { IBooking, defaultBooking } from "../../models/IBooking";
+import { IBooking } from "../../models/IBooking";
 import { CurrentBookingContext } from "../../contexts/CurrentBookingContext";
 import {
   getAllBookings,
