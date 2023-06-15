@@ -46,6 +46,9 @@ form {
         background-color: hsla(358, 97%, 31%, 1);
         transition: 0.5s;
     }
+    @media (min-width:800px) {
+        width: 20%;
+     }
 }
 @keyframes fadeIn {
     0% { opacity: 0; }

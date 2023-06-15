@@ -82,7 +82,7 @@ export const BookTable = () => {
         <Calendar value={dateState} onClickDay={setDateState} minDate={new Date()} ></Calendar></div>
         <BookingSelect userInput={userInput} handleChange={handleChange} />
         <BookingRadio handleChange={handleChange} />
-        <button className="goBtn" disabled={!userInput.time || !userInput.date && userInput.numberOfGuests < 1}>Go</button>
+        <button className="goBtn" disabled={!userInput.time || !userInput.date && userInput.numberOfGuests < 1}>Gå vidare</button>
         <h2>{errMsg}</h2>
       </form>
     </div>)}
