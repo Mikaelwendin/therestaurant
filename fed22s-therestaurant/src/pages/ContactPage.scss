@@ -5,7 +5,7 @@
   background-image: url("../assets/photos/outsidebysea.jpeg"); //lagt till från här till...
   background-repeat: no-repeat;
   background-size:cover;
-  height: 100vh;
+  min-height: 100vh;
   animation: fadeIn 1s;
   flex-direction: column;
   @media (min-width:800px) {
