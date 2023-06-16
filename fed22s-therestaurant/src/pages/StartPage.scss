@@ -4,7 +4,13 @@
   grid-template-columns: 1fr;
   grid-template-rows: auto 1fr auto;
   animation: fadeIn 1s;
-  height: 0;
+  height: 100vh;
+  background-image: url("../assets/photos/outsidebywater.avif");
+
+}
+
+.cUDQbi{
+  height: unset;
 }
 
 .fyraboxar {

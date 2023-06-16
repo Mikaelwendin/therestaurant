@@ -7,7 +7,10 @@
   background-size:cover;
   height: 100vh;
   animation: fadeIn 1s;
-  flex-direction: row;
+  flex-direction: column;
+  @media (min-width:800px) {
+    flex-direction: row;
+ }
 }
 
 .styled-form {

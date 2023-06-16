@@ -1,6 +1,7 @@
 import { Outlet } from "react-router";
 import { PageNavigation } from "./Navigation/PageNavigation";
 import "./layout.scss";
+/* import Footer from "../components/Footer/Footer"; */
 
 export const Layout = () => {
   return (
@@ -9,7 +10,7 @@ export const Layout = () => {
       <main>
         <Outlet></Outlet>
       </main>
-      {/*       <footer><p className="footer-information">Insta, Facebook, Adress</p></footer> */}
+      {/*       <Footer></Footer> */}
     </>
   );
 };
