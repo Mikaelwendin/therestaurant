@@ -1,51 +1,44 @@
 import { ChangeEvent, useState } from "react";
-/* import validator from "validator"; */
+import "./contactForm.scss";
 
 export default function ContactForm() {
-    const [formData, setFormData] = useState({ name: "", number: "", email: "", message: "" });
+    const [formData, setFormData] = useState({
+        name: "",
+        number: "",
+        email: "",
+        message: ""
+    });
 
-    const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const { name, value } = e.target;
-
-        if (e.target.type === 'text') {
-            setFormData({ ...formData, [name]: value })
-        } else if (e.target.type === 'email') {
-            setFormData({ ...formData, [name]: value })
-        } else if (e.target.type === 'message') {
-            setFormData({ ...formData, [name]: value })
-        }
-
         setFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
     };
 
-    const handleSubmit = (event) => {
+    const handleSubmit = (event: React.FormEvent) => {
         event.preventDefault();
-        //implementera mail
-
     };
 
-    /*     const validateEmail = (email) => {
-            if (validator.isEmail(email)) {
-                postMessage("Tack för ditt mail!");
-            } else {
-                postMessage("Lägg till en befientlig mailadress");
-            }
-        }; */
-
     return (
-        //skapa div att styla
-        <form onSubmit={handleSubmit}>
-            <label htmlFor="name">Namn:</label>
-            <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} className="full-width-input" />
+        <form onSubmit={handleSubmit} className="styled-form">
+            <section>
+                <label htmlFor="name">Namn:</label>
+                <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} className="full-width-input" />
+            </section>
 
-            <label htmlFor="number">Telefonnummer:</label>
-            <input type="text" id="number" name="number" value={formData.number} onChange={handleChange} className="full-width-input" />
+            <section>
+                <label htmlFor="number">Telefonnummer:</label>
+                <input type="text" id="number" name="number" value={formData.number} onChange={handleChange} className="full-width-input" />
+            </section>
 
-            <label htmlFor="email">Email:</label>
-            <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} className="full-width-input" />
+            <section>
+                <label htmlFor="email">E-post:</label>
+                <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} className="full-width-input" />
+            </section>
 
-            <label htmlFor="message">Meddelande:</label>
-            <textarea id="message" name="message" value={formData.message} onChange={handleChange} className="full-width-input" />
+            <section>
+                <label htmlFor="message">Meddelande:</label>
+                <textarea id="message" name="message" value={formData.message} onChange={handleChange} className="full-width-input" />
+            </section>
 
             <button type="submit">Skicka</button>
         </form>

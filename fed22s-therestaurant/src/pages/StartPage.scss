@@ -1,8 +1,10 @@
 .container {
   display: grid;
+  border: none;
   grid-template-columns: 1fr;
   grid-template-rows: auto 1fr auto;
   animation: fadeIn 1s;
+  height: 0;
 }
 
 .fyraboxar {
@@ -14,13 +16,14 @@
 }
 
 .rubrik {
+  margin-top: 80px;
   font-family: Herrington;
   font-size: 40px;
   font-weight: bold;
   color: #FFBA08;
   text-transform: uppercase;
   text-align: center;
-  border: none;
+
 }
 
 .fade-in-heading {

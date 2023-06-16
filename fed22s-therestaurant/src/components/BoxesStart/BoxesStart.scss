@@ -1,16 +1,28 @@
-
-.four-boxes {
+.comment-container {
   display: flex;
-  justify-content: space-between;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 200px;
+  justify-content: center;
+  align-items: flex-end;
+  margin-top: auto;
 }
 
-.box {
-  flex-basis: 23%;
-  padding: 20px;
-  background-color: #f1f1f1;
-  border-radius: 5px;
-  text-align: center;
-  position: relative;
-  }
+.comment-section {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-items: center;
+  gap: 30px;
+  padding: 5px;
+}
+
+.comment {
+  padding: 10px;
+  border: 0px;
+  font-style: italic;
+}
+
+.author {
+  font-weight: bold;
+}
+
+.comment-text {
+  margin-top: 3px;
+}

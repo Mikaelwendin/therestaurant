@@ -9,7 +9,7 @@ export const Layout = () => {
       <main>
         <Outlet></Outlet>
       </main>
-      <footer><p className="footer-information">Insta, Facebook, Adress</p></footer>
+      {/*       <footer><p className="footer-information">Insta, Facebook, Adress</p></footer> */}
     </>
   );
 };
