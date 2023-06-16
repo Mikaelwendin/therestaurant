@@ -14,7 +14,7 @@ export const Contactpage = () => {
           <img src={map} alt="Pinned map" />
           <div className="text-container">
             <section>Vi finns på Gamla Havsgränd 23, intill Lobster Mobster.
-              <p>För att nå oss per telefon; 08/654 32 10</p>
+              <p>Nå oss per telefon; 08/654 32 10</p>
               <p>Skicka annars ett meddelande via formuläret så svarar vi inom 24h!</p>
             </section>
           </div>
