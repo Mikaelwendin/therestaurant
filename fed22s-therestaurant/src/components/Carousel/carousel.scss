@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 400px;
+  height: auto;
 }
 
 .carousel .carousel-status {
@@ -32,5 +32,8 @@
 
 .carousel-root .carousel-slider {
   position: relative;
+}
+.carousel-container {
+  border: 1px solid #323232;
 }
 
