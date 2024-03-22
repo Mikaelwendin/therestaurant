@@ -1,0 +1,14 @@
+.menuBox {
+    display: flex;
+    justify-content: center;
+    margin-top: 20%;
+    & .menu {
+        font-size: 1.3rem;
+
+        & li {
+            font-family: Harrington;
+            
+        }
+
+    }
+}

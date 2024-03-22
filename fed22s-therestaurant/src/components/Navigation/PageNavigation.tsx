@@ -44,6 +44,7 @@ export const PageNavigation = () => {
                         <li><Link to="/">Home</Link></li>
                         <li><Link to="/booking">Bookings</Link></li>
                         <li><Link to="/contact">Contact</Link></li>
+                        <li><Link to="/menu">Meny</Link></li>
                     </ul>
                 </nav>
             </div>
