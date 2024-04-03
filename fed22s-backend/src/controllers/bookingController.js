@@ -25,7 +25,7 @@ exports.createNewBooking = async (req, res) => {
     return res
       .setHeader(
         "Location",
-        `http://localhost:${process.env.PORT}/api/v1/bookings/${newBooking._id}`
+        `https://therestaurant-mocha.vercel.app/api/v1/bookings/${newBooking._id}`
       )
       .status(201)
       .json(newBooking);
