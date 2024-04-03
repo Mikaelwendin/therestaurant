@@ -1,7 +1,5 @@
 import { Outlet } from "react-router";
 import { PageNavigation } from "./Navigation/PageNavigation";
-import "./layout.scss";
-/* import Footer from "../components/Footer/Footer"; */
 
 export const Layout = () => {
   return (
