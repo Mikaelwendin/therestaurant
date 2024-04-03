@@ -1,7 +1,7 @@
 import { IBooking } from "../models/IBooking";
 import axios from "axios";
 
-const BASE_URL = "https://therestaurant-mocha.vercel.app/booking";
+const BASE_URL = "https://therestaurant-mocha.vercel.app/bookings";
 
 const get = async <T>(endpoint: string) => {
   const response = await axios.get<T>(`${BASE_URL}${endpoint}`);
